@@ -2,15 +2,22 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def get_values_and_grades(url):
+def get_title_values_and_grades_img(url):
     try:
         r = requests.get(url)
         soup = BeautifulSoup(r.text, 'lxml')
 
         try:
-            img_url = soup.find('section', class_='bg-white py-3 mb-3 shadow').find('div', class_='container').find('div', class_='col-3 col-md-2 col-xl-1').find('img').get('src')
+            title = soup.find('section', class_='bg-white py-3 mb-3 shadow').find(
+                'div', class_='col-9 col-md-10 col-xl-11').find('h1', class_='h2 mb-1').text
         except Exception:
-            img_url = None
+            title = None
+
+        try:
+            img_url = soup.find('section', class_='bg-white py-3 mb-3 shadow').find('div', class_='container').find('div', class_='col-3 col-md-2 col-xl-1').find('img').get('src')
+            img = requests.get(img_url).content
+        except Exception:
+            img = None
 
         soup = soup.find('div', class_='container mt-2').find('div', class_='col-12 col-md-6').find('div', class_='tab-pane active')
         containers = soup.find('ul', class_='list-group mb-1').find_all('li', class_='list-group-item')[1:]
@@ -31,13 +38,10 @@ def get_values_and_grades(url):
         except Exception:
             values_and_grades = None
 
-        return values_and_grades, img_url
+        return title, values_and_grades, img
     except Exception:
-        return None, None
+        return None, None, None
 
 
 if __name__ == "__main__":
-    test_url = 'https://comics.gocollect.com/guide/view/124346'
-    value, img_url = get_values_and_grades(test_url)
-    print(value)
-    print(img_url)
+    pass
