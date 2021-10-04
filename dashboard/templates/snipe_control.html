@@ -88,13 +88,19 @@
 
                                     <script>
                                     $(document).on("click", "#MyButton", function(event){
+                                        document.getElementById('go-collect-new-data').innerHTML = ''
+                                        let strLoadingText = 'Loading... Please wait';
                                         let api_url = document.getElementById("go-collect-link").value
                                         $.ajax({
                                             url: "{% url 'generate_gocollect_data' %}",
                                             data: {
                                                 link: api_url
                                               },
+                                            beforeSend: function () {
+                                              $('#go-collect-new-data').html(strLoadingText);
+                                            },
                                         }).done(function(data) {
+                                            document.getElementById('go-collect-new-data').innerHTML = ''
                                             let response = JSON.parse(data)
                                             let title = document.createElement("H3")
                                             let arr = response['values_and_grades']
@@ -104,8 +110,8 @@
                                             table_head = document.createElement("THEAD")
                                             let left_th = document.createElement("TH")
                                             let right_th = document.createElement("TH")
-                                            left_th.innerText = 'Values'
-                                            right_th.innerText = 'Grades'
+                                            left_th.innerText = 'Grades'
+                                            right_th.innerText = 'Values'
                                             table_head.appendChild(left_th)
                                             table_head.appendChild(right_th)
                                             grades_table.appendChild(table_head)
@@ -113,8 +119,8 @@
                                               let table_tr = document.createElement("TR");
                                               let left_td = document.createElement("TD");
                                               let right_td = document.createElement("TD");
-                                              left_td.textContent = item[0];
-                                              right_td.textContent = item[1];
+                                              left_td.textContent = item[1];
+                                              right_td.textContent = item[0];
                                               table_tr.appendChild(left_td)
                                               table_tr.appendChild(right_td)
                                               grades_table.appendChild(table_tr)
@@ -122,7 +128,7 @@
                                             grades_table.className = "table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer"
                                             img.src = response['img'];
                                             img.className = "image-input image-input-outline";
-                                            img.height = 400;
+                                            img.height = 125;
                                             table_resp_div = document.createElement("DIV")
                                             table_resp_div.className = "table-responsive"
                                             table_resp_div.appendChild(grades_table)
