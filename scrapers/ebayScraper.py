@@ -22,9 +22,8 @@ class EbayScraper:
     scraped_items = []
     matched_items = []
 
-    def __init__(self, title, sleep_time):
-        self.sleep_time = sleep_time
-        self.product_title = title
+    def __init__(self):
+        self.product_title = "avengers #2"
         self.search_query = self.product_title + ' cgc'
         self.min_grade = 0.0
         self.price_percentage = 100
@@ -32,6 +31,16 @@ class EbayScraper:
         self.max_grade = 10.0
         self.negative_words = ''
         self.cgc_link = 'https://comics.gocollect.com/guide/view/124346'
+
+        # self.product_title = sys.argv[1]
+        # self.search_query = self.product_title + ' cgc'
+        # self.cgc_link = sys.argv[2]
+        # self.price_percentage = int(sys.argv[3])
+        # self.floor_price = int(sys.argv[4])
+        # self.min_grade = float(sys.argv[5])
+        # self.max_grade = float(sys.argv[6])
+        # self.negative_words = str(sys.argv[7])
+
         self.grades_values, self.img_url = get_values_and_grades(self.cgc_link)
         self.get_comics_image()
         options = ChromeOptions()
@@ -71,6 +80,7 @@ class EbayScraper:
             print('Runtime error: ', ex)
         finally:
             time.sleep(5)
+            self.delete_comics_image()
             self.driver.close()
             self.driver.quit()
 
@@ -86,7 +96,7 @@ class EbayScraper:
 
     def match_comics_name(self, item):
         try:
-            match = re.search(r'{}\b'.format(self.product_title), item['title'].lower())
+            match = re.search(r'{}\b'.format(self.product_title.lower()), item['title'].lower())
             if match:
                 return True
             else:
@@ -251,8 +261,10 @@ class EbayScraper:
         with open(f'photo_temp/{self.product_title}.jpg', 'wb') as f:
             f.write(r.content)
 
-    def CalcImageHash(self, FileName):
+    def delete_comics_image(self):
+        os.remove(f'photo_temp/{self.product_title}.jpg')
 
+    def CalcImageHash(self, FileName):
         image = cv2.imread(FileName)  # Прочитаем картинку
         resized = cv2.resize(image, (8, 8), interpolation=cv2.INTER_AREA)  # Уменьшим картинку
         gray_image = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)  # Переведем в черно-белый формат
@@ -300,11 +312,5 @@ class EbayScraper:
 
 
 if __name__ == "__main__":
-    with sqlite3.connect('../db.sqlite3') as con:
-        cursor = con.cursor()
-        cursor.execute('SELECT * FROM dashboard_snipemodel WHERE title = "Avengers #4"')
-        row = cursor.fetchone()
-
-        driver = EbayScraper(title='avengers #1', sleep_time=5)
+        driver = EbayScraper()
         driver.open_ebay_and_start_scraping()
-        # driver.test_ban_system()

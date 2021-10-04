@@ -1,3 +1,3 @@
 /db.sqlite3
-/scrapers/test.py
+/dashboard/scripts/update_grades.py
 /scrapers/chromedriver.exe

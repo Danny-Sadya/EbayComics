@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms.models import model_to_dict
+from django.views import View
 
 from .forms import SnipeForm
 from .models import SnipeModel
-from .get_comics_title import get_comics_title
+from .scripts.get_comics_title import get_comics_title
 
-# Create your views here.
 
 def dashboard_control(request, *args, **kwargs):
     snipe_items = SnipeModel.objects.all()
@@ -21,19 +21,31 @@ def dashboard_control(request, *args, **kwargs):
             SnipeModel.objects.create(title=title, **form.cleaned_data)
         else:
             print(form.errors)
-        # return render(request,'snipe_control.html', context={'snipe_items': snipe_items, 'form': form})
         return redirect('/dashboard/')
     snipe_items = SnipeModel.objects.all()
     return render(request, 'snipe_control.html', context={'snipe_items': snipe_items, 'form': form})
+
+def create_snipe(request):
+    template_name = 'snipe_control.html'
+    form = SnipeForm(request.POST, request.FILES)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            return redirect('/dashboard/')
+        else:
+            form = SnipeForm()
+            return render(request, template_name, context={'form': form})
+    else:
+        context = {'form': form}
+        return render(request, template_name, context)
 
 
 def delete_snipe(request, pk):
     if request.user.is_authenticated:
         snipe_item = get_object_or_404(SnipeModel, pk=pk)
-
-        if request.method == "POST":
-            snipe_item.delete()
-            return redirect('/dashboard/')
+        snipe_item.delete()
+        return redirect('/dashboard/')
     else:
         return redirect('/dashboard/')
 
@@ -55,5 +67,3 @@ def edit_snipe(request, pk):
         context = {'form': form}
         return render(request, 'snipe_edit.html', context)
 
-def test(request):
-    return render(request, 'base.html')

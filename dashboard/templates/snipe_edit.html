@@ -1,67 +1,75 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Control Panel</title>
 <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+          <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+      <!-- Font Awesome -->
+    <link rel="stylesheet" href="{%  static 'src/plugins/fontawesome-free/css/all.min.css' %}">
+      <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
+    <link rel="shortcut icon" href="{% static 'dist/assets/media/logos/favicon.ico' %}" />
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <!--end::Fonts-->
+    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    <link href="{% static 'dist/assets/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'dist/assets/css/style.bundle.css' %}" rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+
+
+
+
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
-<nav class="navbar navbar-default navbar-static-top">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">
-							Dashboard
-						</a>
-					</div>
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav navbar-right">
-                            {% if user.is_authenticated %}
-                             <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-                           {% else %}
-                             <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-                           {% endif %}
-							</ul>
-						</div>
-					</div>
-				</nav>
-<body>
-    <div class="container-fluid">
-        <div class="col col-md-3">
-            <div class="panel-group" id="accordion">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                          <h2>Edit section</h2>
-                   {% if 'dashboard.rw' in user.get_all_permissions %}
-                    <form action="" method="POST">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <span class="input-group-btn">
-                        <input type="submit" value="save edits" class="btn btn-success">
-                        </span>
-                    </form>
-                        {% endif %}
-                  </h4>
-              </div>
-            </div>
-            </div>
+{% if user.is_authenticated %}
+<body id="kt_body" style="background-image: url({% static 'dist/assets/media/patterns/header-bg.jpg' %} )" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
+ <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+        <div class="page-title d-flex flex-column me-3">
+            <h1 class="d-flex text-white fw-bolder my-1 fs-3">Dashboard</h1>
+            <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+                <li class="breadcrumb-item text-white opacity-75">
+                    <a href="../../demo2/dist/index.html" class="text-white text-hover-primary">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-white opacity-75 w-5px h-2px"></span>
+                </li>
+                <li class="breadcrumb-item text-white opacity-75">Dashboard</li>
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-white opacity-75 w-5px h-2px"></span>
+                </li>
+                <li class="breadcrumb-item text-white opacity-75">Update Section</li>
+            </ul>
         </div>
     </div>
-<!--    <h2>Edit section</h2>-->
-<!--   {% if user.is_authenticated %}-->
-<!--    <form action="" method="POST">-->
-<!--        {% csrf_token %}-->
-<!--        {{ form.as_p }}-->
-<!--        <input type="submit" value="save edits">-->
-<!--    </form>-->
-<!--        {% endif %}-->
+<div class="content">
+    <div class="container-fluid">
+        {% if 'dashboard.rw' in user.get_all_permissions %}
+            <div class="pt-6 col-md-6">
+                <div class="card px-10 px-lg-15 pt-0 pb-15">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-15 text-center">
+                            <h1 class="pt-3">Update Section</h1>
+                        </div>
+                            {{ form.as_p }}
+                        <div class="text-center">
+                           <span class="input-group-btn">
+                                <input type="submit" value="Update" class="btn btn-primary">
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
 </body>
-</html>
+{% endif %}

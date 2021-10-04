@@ -8,7 +8,8 @@ def get_values_and_grades(url):
         soup = BeautifulSoup(r.text, 'lxml')
 
         try:
-            img_url = soup.find('section', class_='bg-white py-3 mb-3 shadow').find('div', class_='container').find('div', class_='col-3 col-md-2 col-xl-1').find('img').get('src')
+            img_url = soup.find('section', class_='bg-white py-3 mb-3 shadow').find('div', class_='container').find(
+                'div', class_='col-3 col-md-2 col-xl-1').find('img').get('src')
         except Exception:
             img_url = None
 
