@@ -1,0 +1,44 @@
+version: "3.3"
+
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    hostname: rabbitmq
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
+    restart: always
+
+  db:
+    image: postgres
+    environment:
+      - TZ=UTC
+      - POSTGRES_DB=###
+      - POSTGRES_USER=###
+      - POSTGRES_PASSWORD=###
+    volumes:
+      - .:/ebaycomics
+    restart: always
+
+  web:
+    build: .
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/ebaycomics
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: always
+
+  worker:
+    build:
+      context: .
+    command: sh -c "celery -A proj_name worker -B --loglevel=info"
+    volumes:
+      - .:/ebaycomics
+    links:
+      - rabbitmq
+    depends_on:
+      - rabbitmq
+    restart: always

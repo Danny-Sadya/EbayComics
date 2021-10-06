@@ -60,3 +60,8 @@ class SnipeModel(models.Model):
 
     def __str__(self):
         return(str(self.pk))
+
+
+class EbayScraperResult(models.Model):
+    scraper_model = models.ForeignKey(to=SnipeModel, on_delete=models.CASCADE)
+    pass
