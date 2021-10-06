@@ -34,6 +34,7 @@ def get_title_values_and_grades_img(url):
                     values_and_grades.append((grade, value))
                 except Exception:
                     pass
+
         except Exception:
             values_and_grades = None
 

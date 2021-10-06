@@ -96,7 +96,9 @@ class EbayScraper:
 
     def match_comics_name(self, item):
         try:
+            splited_title = self.product_title.split("#")
             match = re.search(r'{}\b'.format(self.product_title.lower()), item['title'].lower())
+            match = re.search(r'{}[ #%]{}\b'.format(splited_title[0].lower().strip(), splited_title[1]), item['title'].lower())
             if match:
                 return True
             else:
@@ -169,13 +171,14 @@ class EbayScraper:
             soup = soup.find('div', class_='left-center').find('ul', id='ListViewInner')
             cards = soup.find_all('li', class_='sresult lvresult clearfix li')
             cards.extend(soup.find_all('li', class_='sresult lvresult clearfix li shic'))
+
             for card in cards:
                 try:
                     title = card.find('div', class_='lvpic pic img left').find('div', class_='lvpicinner full-width picW').find(
                         'img').get('alt')
                     cost = float(
                         card.find('ul', class_='lvprices left space-zero').find('span', class_='bold')
-                            .text.replace('\xa0','').replace(
+                            .text.replace('\xa0', '').replace(
                             '\n', '').replace('US $', '').replace(',', '.').strip().split(' ')[-1])
                     url = card.find('h3', class_='lvtitle').find('a', class_='vip').get('href')
 
@@ -194,10 +197,7 @@ class EbayScraper:
                     })
                 except Exception as ex:
                     print(title, ex)
-                    input()
-            # print(self.scraped_items)
-            # print(len(cards))
-            # print(len(self.scraped_items))
+
         except Exception as ex:
             print('Error in cards scraping: ', ex)
 
@@ -228,6 +228,7 @@ class EbayScraper:
                 if button.get_attribute('href') == self.driver.current_url:
                     return False
                 return True
+
             except Exception as ex:
                 return False
 
@@ -265,9 +266,9 @@ class EbayScraper:
         os.remove(f'photo_temp/{self.product_title}.jpg')
 
     def CalcImageHash(self, FileName):
-        image = cv2.imread(FileName)  # Прочитаем картинку
-        resized = cv2.resize(image, (8, 8), interpolation=cv2.INTER_AREA)  # Уменьшим картинку
-        gray_image = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)  # Переведем в черно-белый формат
+        image = cv2.imread(FileName)
+        resized = cv2.resize(image, (8, 8), interpolation=cv2.INTER_AREA)
+        gray_image = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
         avg = gray_image.mean()  # Среднее значение пикселя
         ret, threshold_image = cv2.threshold(gray_image, avg, 255, 0)  # Бинаризация по порогу
 
@@ -307,6 +308,7 @@ class EbayScraper:
             if difference < 45:
                 return True
             return False
+
         except Exception:
             return False
 
