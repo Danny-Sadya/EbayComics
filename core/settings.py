@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-za$&394-q&v2pxvs_9=3f7^hwa0c#vun95gem_fhsf0+yda@z%
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 LOGIN_REDIRECT_URL = '/dashboard/'
 
@@ -64,9 +64,9 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '###',
-        'USER': '###',
-        'PASSWORD': '###',
+        'NAME': 'scrapers',
+        'USER': 'scrapers_admin',
+        'PASSWORD': 'fralDnewTw3w',
         'HOST': 'db',
         'PORT': '5432',
     }
@@ -118,3 +118,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "static_root")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CELERY_BROKER_URL = 'amqp://rabbitmq'
