@@ -16,36 +16,39 @@ import cv2
 import difflib
 import random
 from selenium.webdriver.common.by import By
+import sqlite3
 
 
 class EbayScraper:
     scraped_items = []
     matched_items = []
 
-    def __init__(self):
-        self.product_title = "avengers #2"
-        self.search_query = self.product_title + ' cgc'
-        self.min_grade = 0.0
-        self.price_percentage = 100
-        self.floor_price = 85
-        self.max_grade = 10.0
-        self.negative_words = ''
-        self.cgc_link = 'https://comics.gocollect.com/guide/view/124346'
-
-        # self.product_title = sys.argv[1]
+    def __init__(self, product_title, cgc_link, price_percentage, floor_price, min_grade, max_grade, negative_words):
+        # self.product_title = "Avengers #8"
         # self.search_query = self.product_title + ' cgc'
-        # self.cgc_link = sys.argv[2]
-        # self.price_percentage = int(sys.argv[3])
-        # self.floor_price = int(sys.argv[4])
-        # self.min_grade = float(sys.argv[5])
-        # self.max_grade = float(sys.argv[6])
-        # self.negative_words = str(sys.argv[7])
+        # self.min_grade = 0.0
+        # self.price_percentage = 13000
+        # self.floor_price = 85
+        # self.max_grade = 10.0
+        # self.negative_words = ''
+        # self.cgc_link = 'https://comics.gocollect.com/guide/view/125070'
+
+        self.product_title = product_title
+        self.search_query = self.product_title + ' cgc'
+        self.cgc_link = cgc_link
+        self.price_percentage = int(price_percentage)
+        self.floor_price = int(floor_price)
+        self.min_grade = float(min_grade)
+        self.max_grade = float(max_grade)
+        self.negative_words = str(negative_words)
 
         self.grades_values, self.img_url = get_values_and_grades(self.cgc_link)
         self.get_comics_image()
         options = ChromeOptions()
         options.add_argument("--start-maximized")
         # options.add_argument("--headless")
+        # options.add_argument("--lang=en")
+
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_argument("--disable-blink-features=AutomationControlled")
@@ -55,11 +58,10 @@ class EbayScraper:
 
     def open_ebay_and_start_scraping(self):
         try:
-            self.driver.get('https://www.ebay.com/sch/ebayadvsearch?_ul=BY')
-            time.sleep(5)
+            self.open_ebay()
             self.find_a_product()
-
-            time.sleep(5)
+            self.switch_cost_converting()
+            time.sleep(1)
             i = 1
             while True:
                 print(f'page #{i}')
@@ -73,9 +75,9 @@ class EbayScraper:
             self.scraped_items = [dict(t) for t in {tuple(d.items()) for d in self.scraped_items}]
             self.find_items_that_fit_criterias()
 
-            print(len(self.scraped_items))
-            print(self.matched_items)
-            print(len(self.matched_items))
+            # print(len(self.scraped_items))
+            # print(self.matched_items)
+            # print(len(self.matched_items))
         except Exception as ex:
             print('Runtime error: ', ex)
         finally:
@@ -83,6 +85,33 @@ class EbayScraper:
             self.delete_comics_image()
             self.driver.close()
             self.driver.quit()
+            return self.matched_items
+
+    def switch_cost_converting(self):
+        time.sleep(1)
+        button = self.driver.find_element_by_xpath("//span[@class='vLIST vHvr']")
+        button.click()
+        time.sleep(1)
+        button = self.driver.find_element_by_xpath("//span[contains(.,'Customize...')]")
+        button.click()
+        time.sleep(1)
+        button = self.driver.find_element_by_xpath("(//input[@type='checkbox'])[6]")
+        button.click()
+        time.sleep(1)
+        button.send_keys(Keys.ENTER)
+        # button = self.driver.find_element_by_xpath("//input[@class='btn-prim small']")
+        # button.click()
+
+    def open_ebay(self):
+        # self.driver.get('https://www.ebay.com/')
+        self.driver.get("https://www.ebay.com/sch/ebayadvsearch")
+        time.sleep(5)
+        button = self.driver.find_element_by_xpath("//a[@id='gh-eb-Geo-a-default']")
+        button.click()
+        button = self.driver.find_element_by_xpath("//span[@class='gh-eb-Geo-txt'][contains(.,'English')]")
+        button.click()
+        # button = self.driver.find_element_by_xpath("//a[@href='https://www.ebay.com/sch/ebayadvsearch']")
+        # button.click()
 
     def find_items_that_fit_criterias(self):
         for item in self.scraped_items:
@@ -90,21 +119,22 @@ class EbayScraper:
                 if self.is_cgc_in_title(item):
                     grade = self.find_grade_in_title(item)
                     if grade:
-                        if self.match_grade_criteria(grade) and self.match_price_criteria(item, grade):
-                            if self.compare_photos(item):
-                                self.matched_items.append(item)
+                        if self.match_grade_criteria(grade):
+                            if self.match_price_criteria(item, grade):
+                                if self.compare_photos(item):
+                                    self.matched_items.append(item)
 
     def match_comics_name(self, item):
         try:
             splited_title = self.product_title.split("#")
-            match = re.search(r'{}\b'.format(self.product_title.lower()), item['title'].lower())
+            # match = re.search(r'{}\b'.format(self.product_title.lower()), item['title'].lower())
             match = re.search(r'{}[ #%]{}\b'.format(splited_title[0].lower().strip(), splited_title[1]), item['title'].lower())
             if match:
                 return True
             else:
                 return False
         except Exception as ex:
-            print('Cannot match comics name: ', ex)
+            print('Cannot match comics name: ', ex, item)
             return False
 
     def match_price_criteria(self, item, grade):
@@ -113,11 +143,12 @@ class EbayScraper:
             cost_that_user_willing_to_pay = (100 + self.price_percentage) * cgc_cost / 100
             floor_cost = (100 - self.floor_price) * cgc_cost / 100
             if floor_cost <= item['cost'] <= cost_that_user_willing_to_pay:
+                # print(f'floor cost {floor_cost}, item cost {item["cost"]}, max cost {cost_that_user_willing_to_pay} at {item["title"]}, {item["url"]}')
                 return True
             return False
         except Exception as ex:
             print('Cannot match price criterias: ', ex)
-            print(grade, item)
+            # print(grade, item)
             return False
 
     def match_grade_criteria(self, grade):
@@ -127,6 +158,7 @@ class EbayScraper:
             return False
         except Exception as ex:
             print('Cannot match grade criterias: ', ex)
+
             return False
 
     def is_cgc_in_title(self, item):
@@ -142,11 +174,15 @@ class EbayScraper:
         try:
             match = re.search(r'cgc \d[.,]\d', item['title'].lower()) or re.search(r'\d[.,]\d cgc', item['title'].lower())
             if match:
-                grade = match[0].split(' ')[1].replace(',', '.')
-                return float(grade)
+                try:
+                    grade = float(match[0].split(' ')[1].replace(',', '.'))
+                except:
+                    grade = float(match[0].split(' ')[0].replace(',', '.'))
+                return grade
+
             return None
         except Exception as ex:
-            print('Cannot find grade in title: ', ex)
+            print('Cannot find grade in title: ', ex, match[0])
             return None
 
     def find_a_product(self):
@@ -161,7 +197,6 @@ class EbayScraper:
             select_items_per_page_button.select_by_value('200')
             search_button = self.driver.find_element_by_xpath("//button[@id='searchBtnLowerLnk']")
             search_button.click()
-
         except Exception as ex:
             print('Error in product finding: ', ex)
 
@@ -176,17 +211,23 @@ class EbayScraper:
                 try:
                     title = card.find('div', class_='lvpic pic img left').find('div', class_='lvpicinner full-width picW').find(
                         'img').get('alt')
+                    # title = card.find('h3', class_='lvtitle').find('a', class_='vip').get('data-mtdes')
+                    # cost = float(
+                    #     card.find('ul', class_='lvprices left space-zero').find('span', class_='bold')
+                    #         .text.replace('\xa0', '').replace(
+                    #         '\n', '').replace('US $', '').replace(',', '.').strip().split(' ')[-1])
                     cost = float(
                         card.find('ul', class_='lvprices left space-zero').find('span', class_='bold')
                             .text.replace('\xa0', '').replace(
-                            '\n', '').replace('US $', '').replace(',', '.').strip().split(' ')[-1])
+                            '\n', '').replace('$', '').replace(',', '').strip().split(' ')[-1])
+
                     url = card.find('h3', class_='lvtitle').find('a', class_='vip').get('href')
 
                     img_url = card.find('div', class_='lvpic pic img left').find('div', class_='lvpicinner full-width picW').find(
                         'img').get('src')
 
                     bid = card.find('ul', class_='lvprices left space-zero').find('li', class_='lvformat').text
-                    bid_format = "Auction" if 'став' in bid or 'bid' in bid  else "Buy it now"
+                    bid_format = "Auction" if 'став' in bid or 'bid' in bid else "Buy it now"
 
                     self.scraped_items.append({
                         "title": title,
@@ -228,8 +269,7 @@ class EbayScraper:
                 if button.get_attribute('href') == self.driver.current_url:
                     return False
                 return True
-
-            except Exception as ex:
+            except Exception:
                 return False
 
     def scroll_page(self):
@@ -258,6 +298,7 @@ class EbayScraper:
         return BeautifulSoup(self.driver.page_source, 'lxml')
 
     def get_comics_image(self):
+        os.makedirs('photo_temp/', exist_ok=True)
         r = requests.get(self.img_url)
         with open(f'photo_temp/{self.product_title}.jpg', 'wb') as f:
             f.write(r.content)
@@ -292,6 +333,7 @@ class EbayScraper:
             if hash1[i] != hash2[i]:
                 count = count + 1
             i = i + 1
+
         return count
 
     def compare_photos(self, item):
@@ -303,16 +345,24 @@ class EbayScraper:
                 hash1 = self.CalcImageHash(f'photo_temp/{self.product_title}.jpg')
                 hash2 = self.CalcImageHash(f'photo_temp/{self.product_title}_{suffix}.jpg')
                 difference = self.compareHash(hash1, hash2)
-            os.remove(f'photo_temp/{self.product_title}_{suffix}.jpg')
-            print('Hash difference is: ', difference, f' {item["img_url"]}')
-            if difference < 45:
+            # print(item['title'], ' Hash difference is: ', difference, f' {item["img_url"]}')
+            if difference < 50:
                 return True
             return False
-
-        except Exception:
+        except Exception as ex:
+            print('Error in img... ', ex, item['img_url'])
             return False
+        finally:
+            try:
+                os.remove(f'photo_temp/{self.product_title}_{suffix}.jpg')
+            except Exception:
+                pass
 
 
 if __name__ == "__main__":
-        driver = EbayScraper()
-        driver.open_ebay_and_start_scraping()
+        driver = EbayScraper(product_title = "Avengers #8", min_grade = 0.0, price_percentage = 13000,
+                             floor_price = 85, max_grade = 10.0, negative_words = '',
+                             cgc_link = 'https://comics.gocollect.com/guide/view/125070')
+        matched_items = driver.open_ebay_and_start_scraping()
+        for item in matched_items:
+            print(item)
