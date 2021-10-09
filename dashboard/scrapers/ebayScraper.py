@@ -1,3 +1,4 @@
+import math
 import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -11,10 +12,12 @@ import sys
 # from scrapers.cgcValueScraper import get_values_and_grades
 import re
 import requests
-import cv2
-import difflib
+# import cv2
+# import difflib
 import random
 from selenium.webdriver.common.by import By
+from PIL import Image
+import imagehash
 
 
 class EbayScraper:
@@ -145,7 +148,7 @@ class EbayScraper:
                 return True
             return False
         except Exception as ex:
-            print('Cannot match price criterias: ', ex)
+            print('Cannot match price criterias: ', ex, item['url'])
             # print(grade, item)
             return False
 
@@ -304,35 +307,27 @@ class EbayScraper:
     def delete_comics_image(self):
         os.remove(f'photo_temp/{self.product_title}.jpg')
 
-    def CalcImageHash(self, FileName):
-        image = cv2.imread(FileName)
-        resized = cv2.resize(image, (8, 8), interpolation=cv2.INTER_AREA)
-        gray_image = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
-        avg = gray_image.mean()  # Среднее значение пикселя
-        ret, threshold_image = cv2.threshold(gray_image, avg, 255, 0)  # Бинаризация по порогу
-
-        # Рассчитаем хэш
-        _hash = ""
-        for x in range(8):
-            for y in range(8):
-                val = threshold_image[x, y]
-                if val == 255:
-                    _hash = _hash + "1"
-                else:
-                    _hash = _hash + "0"
-
-        return _hash
+    # def CalcImageHash(self, FileName):
+    #     image = cv2.imread(FileName)
+    #     resized = cv2.resize(image, (8, 8), interpolation=cv2.INTER_AREA)
+    #     gray_image = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
+    #     avg = gray_image.mean()  # Среднее значение пикселя
+    #     ret, threshold_image = cv2.threshold(gray_image, avg, 255, 0)  # Бинаризация по порогу
+    #
+    #     # Рассчитаем хэш
+    #     _hash = ""
+    #     for x in range(8):
+    #         for y in range(8):
+    #             val = threshold_image[x, y]
+    #             if val == 255:
+    #                 _hash = _hash + "1"
+    #             else:
+    #                 _hash = _hash + "0"
+    #
+    #     return _hash
 
     def compareHash(self, hash1, hash2):
-        l = len(hash1)
-        i = 0
-        count = 0
-        while i < l:
-            if hash1[i] != hash2[i]:
-                count = count + 1
-            i = i + 1
-
-        return count
+        return math.fabs(hash1 - hash2)
 
     def compare_photos(self, item):
         try:
@@ -340,10 +335,10 @@ class EbayScraper:
             suffix = random.randint(10000, 100000)
             with open(f'photo_temp/{self.product_title}_{suffix}.jpg', 'wb') as f:
                 f.write(r.content)
-                hash1 = self.CalcImageHash(f'photo_temp/{self.product_title}.jpg')
-                hash2 = self.CalcImageHash(f'photo_temp/{self.product_title}_{suffix}.jpg')
+                hash1 = imagehash.average_hash(Image.open(f'photo_temp/{self.product_title}.jpg'))
+                hash2 = imagehash.average_hash(Image.open(f'photo_temp/{self.product_title}_{suffix}.jpg'))
                 difference = self.compareHash(hash1, hash2)
-            # print(item['title'], ' Hash difference is: ', difference, f' {item["img_url"]}')
+            print(item['title'], ' Hash difference is: ', difference, f' {item["img_url"]}')
             if difference < 50:
                 return True
             return False
@@ -394,9 +389,9 @@ def get_values_and_grades(url):
 
 
 if __name__ == "__main__":
-        driver = EbayScraper(product_title = "Avengers #8", min_grade = 0.0, price_percentage = 13000,
+        driver = EbayScraper(product_title = "Avengers #1", min_grade = 0.0, price_percentage = 13000,
                              floor_price = 85, max_grade = 10.0, negative_words = '',
-                             cgc_link = 'https://comics.gocollect.com/guide/view/125070')
+                             cgc_link = 'https://comics.gocollect.com/guide/view/124346')
         matched_items = driver.open_ebay_and_start_scraping()
         for item in matched_items:
             print(item)
