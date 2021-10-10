@@ -89,16 +89,16 @@ class EbayScraper:
             return self.matched_items
 
     def switch_cost_converting(self):
-        time.sleep(1)
+        time.sleep(5)
         button = self.driver.find_element_by_xpath("//span[@class='vLIST vHvr']")
         button.click()
-        time.sleep(1)
+        time.sleep(5)
         button = self.driver.find_element_by_xpath("//span[contains(.,'Customize...')]")
         button.click()
-        time.sleep(1)
+        time.sleep(5)
         button = self.driver.find_element_by_xpath("(//input[@type='checkbox'])[6]")
         button.click()
-        time.sleep(1)
+        time.sleep(5)
         button.send_keys(Keys.ENTER)
         # button = self.driver.find_element_by_xpath("//input[@class='btn-prim small']")
         # button.click()
@@ -122,7 +122,7 @@ class EbayScraper:
                     if grade:
                         if self.match_grade_criteria(grade):
                             if self.match_price_criteria(item, grade):
-                                if self.compare_photos(item):
+                                # if self.compare_photos(item):
                                     self.matched_items.append(item)
 
     def match_comics_name(self, item):
@@ -388,9 +388,9 @@ def get_values_and_grades(url):
 
 
 if __name__ == "__main__":
-        driver = EbayScraper(product_title = "Avengers #1", min_grade = 0.0, price_percentage = 13000,
+        driver = EbayScraper(product_title = "Avengers #4", min_grade = 0.0, price_percentage = 13000,
                              floor_price = 85, max_grade = 10.0, negative_words = '',
-                             cgc_link = 'https://comics.gocollect.com/guide/view/124346')
+                             cgc_link = 'https://comics.gocollect.com/guide/view/124741')
         matched_items = driver.open_ebay_and_start_scraping()
         for item in matched_items:
             print(item)
