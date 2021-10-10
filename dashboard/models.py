@@ -55,6 +55,7 @@ class SnipeModel(models.Model):
     lowest_grade = models.CharField(default='0', choices=GRADES, blank=False, null=False, max_length=255)
     highest_grade = models.CharField(default='10',choices=Reverse(GRADES), blank=False, null=False, max_length=255)
     negative_words = models.CharField(blank=True, null=True, max_length=255)
+    positive_words = models.CharField(blank=True, null=True, max_length=255)
     image = models.ImageField(upload_to='image', blank=True, null=True)
     # list_of_grades = models.CharField(blank=True, null=True, max_length=255)
 

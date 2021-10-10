@@ -7,15 +7,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.by import By
 import os
 import sys
-# from scrapers.cgcValueScraper import get_values_and_grades
-import re
+import random
 import requests
+import re
+# from scrapers.cgcValueScraper import get_values_and_grades
 # import cv2
 # import difflib
-import random
-from selenium.webdriver.common.by import By
 # from PIL import Image
 # import imagehash
 
@@ -24,7 +24,7 @@ class EbayScraper:
     scraped_items = []
     matched_items = []
 
-    def __init__(self, product_title, cgc_link, price_percentage, floor_price, min_grade, max_grade, negative_words):
+    def __init__(self, product_title, cgc_link, price_percentage, floor_price, min_grade, max_grade, negative_words, positive_words):
         # self.product_title = "Avengers #8"
         # self.search_query = self.product_title + ' cgc'
         # self.min_grade = 0.0
@@ -42,6 +42,7 @@ class EbayScraper:
         self.min_grade = float(min_grade)
         self.max_grade = float(max_grade)
         self.negative_words = str(negative_words)
+        self.positive_words = str(positive_words)
 
         self.grades_values, self.img_url = get_values_and_grades(self.cgc_link)
         self.get_comics_image()
@@ -89,30 +90,46 @@ class EbayScraper:
             return self.matched_items
 
     def switch_cost_converting(self):
-        time.sleep(5)
-        button = self.driver.find_element_by_xpath("//span[@class='vLIST vHvr']")
-        button.click()
-        time.sleep(5)
-        button = self.driver.find_element_by_xpath("//span[contains(.,'Customize...')]")
-        button.click()
-        time.sleep(5)
-        button = self.driver.find_element_by_xpath("(//input[@type='checkbox'])[6]")
-        button.click()
-        time.sleep(5)
-        button.send_keys(Keys.ENTER)
-        # button = self.driver.find_element_by_xpath("//input[@class='btn-prim small']")
-        # button.click()
+        while True:
+            try:
+                time.sleep(5)
+                button = self.driver.find_element_by_xpath("//span[@class='vLIST vHvr']")
+                button.click()
+                time.sleep(5)
+                button = self.driver.find_element_by_xpath("//span[contains(.,'Customize...')]")
+                button.click()
+                time.sleep(5)
+                button = self.driver.find_element_by_xpath("(//input[@type='checkbox'])[6]")
+                button.click()
+                time.sleep(5)
+                button.send_keys(Keys.ENTER)
+                # button = self.driver.find_element_by_xpath("//input[@class='btn-prim small']")
+                # button.click()
+                break
+            except Exception:
+                self.driver.refresh()
 
     def open_ebay(self):
         # self.driver.get('https://www.ebay.com/')
         self.driver.get("https://www.ebay.com/sch/ebayadvsearch")
         time.sleep(5)
-        button = self.driver.find_element_by_xpath("//a[@id='gh-eb-Geo-a-default']")
-        button.click()
-        button = self.driver.find_element_by_xpath("//span[@class='gh-eb-Geo-txt'][contains(.,'English')]")
-        button.click()
+        self.change_language()
         # button = self.driver.find_element_by_xpath("//a[@href='https://www.ebay.com/sch/ebayadvsearch']")
         # button.click()
+
+    def change_language(self):
+        while True:
+            try:
+                button = self.driver.find_element_by_xpath("//a[@id='gh-eb-Geo-a-default']")
+                time.sleep(1)
+                button.click()
+                time.sleep(1)
+                button = self.driver.find_element_by_xpath("//span[@class='gh-eb-Geo-txt'][contains(.,'English')]")
+                time.sleep(1)
+                button.click()
+                break
+            except Exception:
+                pass
 
     def find_items_that_fit_criterias(self):
         for item in self.scraped_items:
@@ -122,8 +139,31 @@ class EbayScraper:
                     if grade:
                         if self.match_grade_criteria(grade):
                             if self.match_price_criteria(item, grade):
+                                if self.match_positive_words_criteria(item) and self.match_negative_words_criteria(item):
                                 # if self.compare_photos(item):
                                     self.matched_items.append(item)
+
+    def match_positive_words_criteria(self, item):
+        try:
+            if len(self.positive_words) != 0:
+                for word in self.positive_words.split(','):
+                    if word.lower() not in item['title'].lower():
+                        return False
+            return True
+        except Exception as ex:
+            print('Error in matching positive words: ', ex)
+            return False
+
+    def match_negative_words_criteria(self, item):
+        try:
+            if len(self.negative_words) != 0:
+                for word in self.negative_words.split(','):
+                    if word.lower() in item['title'].lower():
+                        return False
+            return True
+        except Exception as ex:
+            print('Error in matching negative words: ', ex)
+            return False
 
     def match_comics_name(self, item):
         try:
@@ -326,30 +366,30 @@ class EbayScraper:
     #
     #     return _hash
 
-    def compareHash(self, hash1, hash2):
-        return math.fabs(hash1 - hash2)
-
-    def compare_photos(self, item):
-        try:
-            r = requests.get(item['img_url'])
-            suffix = random.randint(10000, 100000)
-            with open(f'photo_temp/{self.product_title}_{suffix}.jpg', 'wb') as f:
-                f.write(r.content)
-                hash1 = imagehash.average_hash(Image.open(f'photo_temp/{self.product_title}.jpg'))
-                hash2 = imagehash.average_hash(Image.open(f'photo_temp/{self.product_title}_{suffix}.jpg'))
-                difference = self.compareHash(hash1, hash2)
-            print(item['title'], ' Hash difference is: ', difference, f' {item["img_url"]}')
-            if difference < 50:
-                return True
-            return False
-        except Exception as ex:
-            print('Error in img... ', ex, item['img_url'])
-            return False
-        finally:
-            try:
-                os.remove(f'photo_temp/{self.product_title}_{suffix}.jpg')
-            except Exception:
-                pass
+    # def compareHash(self, hash1, hash2):
+    #     return math.fabs(hash1 - hash2)
+    #
+    # def compare_photos(self, item):
+    #     try:
+    #         r = requests.get(item['img_url'])
+    #         suffix = random.randint(10000, 100000)
+    #         with open(f'photo_temp/{self.product_title}_{suffix}.jpg', 'wb') as f:
+    #             f.write(r.content)
+    #             hash1 = imagehash.average_hash(Image.open(f'photo_temp/{self.product_title}.jpg'))
+    #             hash2 = imagehash.average_hash(Image.open(f'photo_temp/{self.product_title}_{suffix}.jpg'))
+    #             difference = self.compareHash(hash1, hash2)
+    #         print(item['title'], ' Hash difference is: ', difference, f' {item["img_url"]}')
+    #         if difference < 50:
+    #             return True
+    #         return False
+    #     except Exception as ex:
+    #         print('Error in img... ', ex, item['img_url'])
+    #         return False
+    #     finally:
+    #         try:
+    #             os.remove(f'photo_temp/{self.product_title}_{suffix}.jpg')
+    #         except Exception:
+    #             pass
 
 
 def get_values_and_grades(url):
@@ -389,7 +429,7 @@ def get_values_and_grades(url):
 
 if __name__ == "__main__":
         driver = EbayScraper(product_title = "Avengers #4", min_grade = 0.0, price_percentage = 13000,
-                             floor_price = 85, max_grade = 10.0, negative_words = '',
+                             floor_price = 85, max_grade = 10.0, negative_words = '', positive_words = '',
                              cgc_link = 'https://comics.gocollect.com/guide/view/124741')
         matched_items = driver.open_ebay_and_start_scraping()
         for item in matched_items:

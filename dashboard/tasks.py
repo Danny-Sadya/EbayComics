@@ -13,7 +13,8 @@ class EbayScraperTask:
         min_grade = getattr(snipe, "lowest_grade")
         max_grade = getattr(snipe, "highest_grade")
         negative_words = getattr(snipe, "negative_words")
-        scraper = EbayScraper(product_title, cgc_link, price_percentage, floor_price, min_grade, max_grade, negative_words)
+        positive_words = getattr(snipe, "positive_words")
+        scraper = EbayScraper(product_title, cgc_link, price_percentage, floor_price, min_grade, max_grade, negative_words, positive_words)
         result = scraper.open_ebay_and_start_scraping()
         for comics in result:
             EbayScraperResult.objects.get_or_create(scraper_model=snipe, title=comics['title'], price=price['cost'],
