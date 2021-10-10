@@ -387,7 +387,6 @@ def get_values_and_grades(url):
         return None, None
 
 
-
 if __name__ == "__main__":
         driver = EbayScraper(product_title = "Avengers #1", min_grade = 0.0, price_percentage = 13000,
                              floor_price = 85, max_grade = 10.0, negative_words = '',
