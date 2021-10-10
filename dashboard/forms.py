@@ -38,6 +38,7 @@ class SnipeForm(forms.ModelForm):
             'lowest_grade',
             'highest_grade',
             'negative_words',
+            'positive_words'
             'image',
         ]
 
