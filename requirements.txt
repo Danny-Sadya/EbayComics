@@ -1,5 +1,4 @@
 amqp==5.0.6
-numpy==1.21.2
 asgiref==3.4.1
 beautifulsoup4==4.10.0
 billiard==3.6.4.0
@@ -15,7 +14,6 @@ Django==3.2.7
 django-crispy-forms==1.13.0
 djangorestframework==3.12.4
 idna==3.2
-ImageHash==4.2.1
 kombu==5.1.0
 lxml==4.6.3
 Pillow==8.3.2
@@ -24,7 +22,6 @@ psycopg2-binary==2.9.1
 pytz==2021.1
 PyWavelets==1.1.1
 requests==2.26.0
-scipy==1.7.1
 selenium==3.141.0
 six==1.16.0
 soupsieve==2.2.1

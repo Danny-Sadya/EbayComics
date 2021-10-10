@@ -16,8 +16,8 @@ import requests
 # import difflib
 import random
 from selenium.webdriver.common.by import By
-from PIL import Image
-import imagehash
+# from PIL import Image
+# import imagehash
 
 
 class EbayScraper:
