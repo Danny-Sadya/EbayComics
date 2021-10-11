@@ -24,7 +24,12 @@ class EbayScraperTask:
 
 @shared_task
 def start_point_ebay_scrapers():
+    print(f'found {len(SnipeModel.objects.all())} snipemodels')
     scraper = EbayScraperTask()
-    for snipe_object in SnipeModel.objects.all():
+    snipes = SnipeModel.objects.all()
+    for snipe_object in snipes:
         scraper.start_point(snipe_object)
 
+@shared_task
+def test():
+    print('govno')

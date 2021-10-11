@@ -64,7 +64,7 @@ class SnipeModel(models.Model):
 
 
 class EbayScraperResult(models.Model):
-    scraper_model = models.ForeignKey(to=SnipeModel, on_delete=models.CASCADE)
+    scraper_model = models.ForeignKey(SnipeModel, on_delete=models.CASCADE)
     title = models.CharField(null=True, blank=True, max_length=255)
     price = models.IntegerField(null=True, blank=True)
     bid_format = models.CharField(null=True, blank=True, max_length=255)

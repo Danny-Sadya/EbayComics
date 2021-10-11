@@ -33,7 +33,7 @@ class EbayScraper:
         # self.max_grade = 10.0
         # self.negative_words = ''
         # self.cgc_link = 'https://comics.gocollect.com/guide/view/125070'
-
+        print('starting scraper')
         self.product_title = product_title
         self.search_query = self.product_title + ' cgc'
         self.cgc_link = cgc_link
@@ -54,7 +54,7 @@ class EbayScraper:
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_argument("--disable-blink-features=AutomationControlled")
-        self.driver = webdriver.Chrome(executable_path=os.path.abspath(os.getcwd()) + r"\chromedriver.exe",
+        self.driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver",
                                        options=options)
         self.driver.set_page_load_timeout(30)
 

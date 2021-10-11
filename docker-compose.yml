@@ -42,3 +42,15 @@ services:
     depends_on:
       - rabbitmq
     restart: always
+
+
+  flower:
+      image: mher/flower
+      restart: always
+      command: ["celery", "flower", "--address=0.0.0.0", "--broker=CELERY_BROKER_URL","--port=5555", "--logging=DEBUG"]
+      environment:
+        CELERY_BROKER_URL: amqp://rabbitmq:5672
+      depends_on:
+        - rabbitmq
+      ports:
+        - 5555:5555
