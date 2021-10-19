@@ -1,10 +1,42 @@
 from .models import SnipeModel, EbayScraperResult
 from celery import shared_task
 from .scrapers.ebayScraper import EbayScraper
+#from multiprocessing import Pool
+from billiard.pool import Pool
+from billiard.pool import Lock
+from billiard.context import Process
+import time
+import random
+from functools import partial
 
 
 class EbayScraperTask:
     def start_point(self, snipe):
+        self.snipe = snipe
+        print(f'work for {getattr(self.snipe, "title")}')
+        product_title = getattr(self.snipe, "title")
+        cgc_link = getattr(self.snipe, "gocollect_link")
+        price_percentage = getattr(self.snipe, "price_percentage")
+        floor_price = getattr(self.snipe, "floor_price")
+        min_grade = getattr(self.snipe, "lowest_grade")
+        max_grade = getattr(self.snipe, "highest_grade")
+        negative_words = getattr(self.snipe, "negative_words")
+        positive_words = getattr(self.snipe, "positive_words")
+        scraper = EbayScraper(product_title, cgc_link, price_percentage, floor_price, min_grade, max_grade, negative_words, positive_words)
+        result = scraper.open_ebay_and_start_scraping() 
+        time.sleep(random.randint(5, 10))
+        for comics in result:
+            print(f'saving comic {comics["title"]}')
+            EbayScraperResult.objects.get_or_create(scraper_model=self.snipe, title=comics['title'], price=comics['cost'],
+                                                    bid_format=comics['bid_format'], comics_url=comics['url'],
+                                                    comics_img_url=comics['img_url'])
+        del result
+    
+       
+
+
+def ebayScraperTask(lock):
+    def start_point(snipe):
         print(f'work for {getattr(snipe, "title")}')
         product_title = getattr(snipe, "title")
         cgc_link = getattr(snipe, "gocollect_link")
@@ -16,20 +48,44 @@ class EbayScraperTask:
         positive_words = getattr(snipe, "positive_words")
         scraper = EbayScraper(product_title, cgc_link, price_percentage, floor_price, min_grade, max_grade, negative_words, positive_words)
         result = scraper.open_ebay_and_start_scraping()
+        lock.acquire()
         for comics in result:
-            EbayScraperResult.objects.get_or_create(scraper_model=snipe, title=comics['title'], price=price['cost'],
+            EbayScraperResult.objects.get_or_create(scraper_model=snipe, title=comics['title'], price=comics['cost'],
                                                     bid_format=comics['bid_format'], comics_url=comics['url'],
-                                                    comics_img_url=comics['comics_img_url'])
+                                                    comics_img_url=comics['img_url'])
+        lock.release()
+    return start_point
 
 
-@shared_task
+def pool_scraper_task(snipe):
+    scraper = EbayScraperTask()
+    scraper.start_point(snipe)
+
+@shared_task()
 def start_point_ebay_scrapers():
     print(f'found {len(SnipeModel.objects.all())} snipemodels')
-    scraper = EbayScraperTask()
     snipes = SnipeModel.objects.all()
-    for snipe_object in snipes:
-        scraper.start_point(snipe_object)
+    #lock = Lock()
+    pool = Pool(processes=3)
+    #func = partial(start_point, lock)
+    #print('starting pools')
+    pool.map(pool_scraper_task, snipes)
+    print('closing all pools')
+    pool.close()
+    pool.join()
+    pool.terminate()
+    print('all pools are closed')
+   # for snipe_object in snipes:
+        #scraper = EbayScraperTask()
+       # start_point(snipe_object)
+   # procs = []
+   # for snipe in snipes:
+   #     proc = Process(target=pool_scraper_task, args=(snipe,))
+   #     procs.append(proc)
+   #     proc.start()
+   #     time.sleep(1)
 
-@shared_task
+
+@shared_task()
 def test():
     print('govno')

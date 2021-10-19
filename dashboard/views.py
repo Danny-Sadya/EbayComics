@@ -16,7 +16,8 @@ def dashboard_control(request, *args, **kwargs):
         if form.is_valid():
             try:
                 title = get_comics_title(request.POST['gocollect_link'])
-            except Exception:
+            except Exception as ex:
+                print('error in getting comics title in views: ', ex)
                 title = request.POST['gocollect_link']
             SnipeModel.objects.create(title=title, **form.cleaned_data)
         else:

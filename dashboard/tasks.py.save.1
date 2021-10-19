@@ -1,0 +1,49 @@
+from .models import SnipeModel, EbayScraperResult
+from celery import shared_task
+from .scrapers.ebayScraper import EbayScraper
+#from multiprocessing import Pool
+from billiard.pool import Pool
+import time
+
+
+class EbayScraperTask:
+    def start_point(self, snipe):
+        print(f'work for {getattr(snipe, "title")}') product_title = getattr(snipe, "title") cgc_link = getattr(snipe, "gocollect_link") price_percentage = getattr(snipe, "price_percentage") floor_price 
+        = getattr(snipe, "floor_price") min_grade = getattr(snipe, "lowest_grade") max_grade = getattr(snipe, "highest_grade") negative_words = getattr(snipe, "negative_words") positive_words = 
+        getattr(snipe, "positive_words") scraper = EbayScraper(product_title, cgc_link, price_percentage, floor_price, min_grade, max_grade, negative_words, positive_words) result = 
+        scraper.open_ebay_and_start_scraping() for comics in result:
+            print(f'saving comic {comics["title"]}')
+            EbayScraperResult.objects.get_or_create(scraper_model=snipe, title=comics['title'], price=comics['cost'],
+                                                    bid_format=comics['bid_format'], comics_url=comics['url'],
+                                                    comics_img_url=comics['img_url'])
+
+
+def pool_scraper_task(snipe):
+    scraper = EbayScraperTask()
+    scraper.start_point(snipe)
+
+@shared_task()
+def start_point_ebay_scrapers():
+    print(f'found {len(SnipeModel.objects.all())} snipemodels')
+    snipes = SnipeModel.objects.all()
+    pool = Pool(processes=3)
+    pool.map(pool_scraper_task, snipes)
+    print('closing all pools')
+    pool.close()
+    pool.join()
+    pool.terminate()
+    print('all pools are closed')
+   # for snipe_object in snipes:
+        #scraper = EbayScraperTask()
+       # start_point(snipe_object)
+   # procs = []
+   # for snipe in snipes:
+   #     proc = Process(target=pool_scraper_task, args=(snipe,))
+   #     procs.append(proc)
+   #     proc.start()
+   #     time.sleep(1)
+
+
+@shared_task()
+def test():
+    print('govno')

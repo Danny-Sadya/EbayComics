@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-za$&394-q&v2pxvs_9=3f7^hwa0c#vun95gem_fhsf0+yda@z%
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '185.41.163.166']
+ALLOWED_HOSTS = ['0.0.0.0', '213.189.219.231']
 
 LOGIN_REDIRECT_URL = '/dashboard/'
 

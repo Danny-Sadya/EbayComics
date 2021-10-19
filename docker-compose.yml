@@ -34,7 +34,7 @@ services:
   worker:
     build:
       context: .
-    command: sh -c "celery -A core worker -B --loglevel=info"
+    command: sh -c "celery -A core worker -B --concurrency=1 -l INFO"
     volumes:
       - .:/ebaycomics
     links:
@@ -42,7 +42,6 @@ services:
     depends_on:
       - rabbitmq
     restart: always
-
 
   flower:
       image: mher/flower

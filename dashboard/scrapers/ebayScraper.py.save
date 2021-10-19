@@ -91,6 +91,7 @@ class EbayScraper:
         except Exception as ex:
             print('Runtime error: ', ex)
         finally:
+            time.sleep(5)
            # self.delete_comics_image()
             self.driver.close()
             self.driver.quit()
@@ -195,14 +196,6 @@ class EbayScraper:
     def match_comics_name(self, item):
         try:
             splited_title = self.product_title.split("#")
-            match = re.search(
-                r'{}\b'.format(self.product_title.lower()), item['title'].lower()) or \
-                    re.search(r'{}[ #%]{}\b'.format(splited_title[0].lower().strip(), splited_title[1]),
-                              item['title'].lower())
-            if match:
-                return True
-            else:
-                return False
         except Exception as ex:
             print('Cannot match comics name: ', ex, item)
             return False
@@ -460,8 +453,6 @@ def get_values_and_grades(url):
         button.send_keys("A010101a", Keys.ENTER)
 
         time.sleep(1)
-        if "app" not in url:
-            url = "gocollect.com/app/".join(url.split("gocollect.com/"))
         driver.get(url)
         time.sleep(1)
 
@@ -492,13 +483,10 @@ def get_values_and_grades(url):
                     pass
         except Exception:
             values_and_grades = None
+        return values_and_grades, img_url
     except Exception as ex:
         print(ex)
-        values_and_grades, img_url = None, None
-    finally:
-        driver.close()
-        driver.quit()
-        return values_and_grades, img_url
+        return None, None
 
 
 if __name__ == "__main__":

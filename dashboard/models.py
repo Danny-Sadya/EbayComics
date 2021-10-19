@@ -60,7 +60,7 @@ class SnipeModel(models.Model):
     # list_of_grades = models.CharField(blank=True, null=True, max_length=255)
 
     def __str__(self):
-        return(str(self.pk))
+        return(str(self.title))
 
 
 class EbayScraperResult(models.Model):
@@ -70,3 +70,7 @@ class EbayScraperResult(models.Model):
     bid_format = models.CharField(null=True, blank=True, max_length=255)
     comics_url = models.CharField(null=True, blank=True, max_length=255)
     comics_img_url = models.CharField(null=True, blank=True, max_length=255)
+
+
+    def __str__(self):
+        return(f'{self.scraper_model.title} | {str(self.title)}')
