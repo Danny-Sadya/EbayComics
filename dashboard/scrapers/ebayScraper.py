@@ -21,10 +21,10 @@ import re
 
 
 class EbayScraper:
-    scraped_items = []
-    matched_items = []
 
     def __init__(self, product_title, cgc_link, price_percentage, floor_price, min_grade, max_grade, negative_words, positive_words):
+        self.scraped_items = []
+        self.matched_items = []
         # self.product_title = "Avengers #8"
         # self.search_query = self.product_title + ' cgc'
         # self.min_grade = 0.0
@@ -95,7 +95,10 @@ class EbayScraper:
             self.driver.close()
             self.driver.quit()
             print(self.matched_items)
-            return self.matched_items
+            test = self.matched_items
+            self.matched_items = []
+            self.scraped_items = []
+            return test
 
     def get_ebay_course(self):
         try:
