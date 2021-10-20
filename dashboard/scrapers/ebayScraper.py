@@ -217,7 +217,7 @@ class EbayScraper:
             floor_cost = (100 - self.floor_price) * cgc_cost / 100
            # print(f'floor cost {floor_cost}, item cost {item["cost"]}, max cost {cost_that_user_willing_to_pay} at {item["title"]}, {item["url"]}')
             if floor_cost <= item['cost'] <= cost_that_user_willing_to_pay:
-                print(f'floor cost {floor_cost}, item cost {item["cost"]}, max cost {cost_that_user_willing_to_pay} at {item["title"]}, {item["url"]}')
+                #print(f'floor cost {floor_cost}, item cost {item["cost"]}, max cost {cost_that_user_willing_to_pay} at {item["title"]}, {item["url"]}')
                 return True
             return False
         except Exception as ex:

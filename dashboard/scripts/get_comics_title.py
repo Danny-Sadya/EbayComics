@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 from selenium.webdriver.common.keys import Keys
 import os
+import requests
 
 
 def get_comics_title(url):
@@ -44,8 +45,10 @@ def get_comics_title(url):
 
         try:
             soup = BeautifulSoup(driver.page_source, 'lxml')
-            img = soup.find('div', class_='p-4 grid grid-cols-12 gap-8 flex items-center').find(
+            img_url = soup.find('div', class_='p-4 grid grid-cols-12 gap-8 flex items-center').find(
                 'img', class_='mx-auto w-48 h-auto rounded-md shadow-md').get('src')
+            r = requests.get(img_url)
+            img = r.content
         except Exception as ex:
             img = None
 

@@ -1,6 +1,10 @@
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms.models import model_to_dict
 from django.views import View
+from django.core.files import File
+import urllib
+import os
 
 from .forms import SnipeForm
 from .models import SnipeModel
@@ -16,11 +20,21 @@ def dashboard_control(request, *args, **kwargs):
         if form.is_valid():
             try:
                 title, img = get_comics_title(request.POST['gocollect_link'])
+               # with open(f"{title}.jpg", 'wb') as f:
+                    #f.write(img)
             except Exception as ex:
                 print('error in getting comics title and image in views: ', ex)
                 title = request.POST['gocollect_link']
                 img = None
-            SnipeModel.objects.create(title=title, image=img, **form.cleaned_data)
+            print(form.cleaned_data)
+            SnipeModel.objects.create(title=title, **form.cleaned_data, image=File(img))
+            snipe = SnipeModel.objects.get(title=title)
+            if not snipe.image:
+                result = urllib.request.urlretrieve(request.POST['gocollect_link'])
+                snipe.image.save(os.path.basename(request.POST['gocollect_link']),
+                    File(open(result[0], 'rb'))
+                    )
+                snipe.save()
         else:
             print(form.errors)
         return redirect('/dashboard/')

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="w9dMHRKn07E0mksOiomx2pbNWUcaPPaodBUNgCuE">
+
+        <title>GoCollect - Log In</title>
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="/css/app.css?id=d790bab85cd051b2f72b">
+
+        <!-- Scripts -->
+        <script src="/js/app.js?id=5dbd31e6c7b3113038c4" defer></script>
+    </head>
+    <body>
+        <div class="font-sans text-gray-900 antialiased">
+            <div>
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-50">
+    <div>
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+                    <div class="">
+                        <a href="/" class="block">
+    <svg class="h-16 w-auto mx-auto" version="1.1" id="GoCollect_Logo_black_SVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 427 109" style="enable-background:new 0 0 427 109;" xml:space="preserve">
+<style type="text/css">
+    .st0{fill:#212529;}
+    .st1{display:none;fill:url(#SVGID_1_);stroke:#FFFFFF;stroke-width:8.3368;stroke-miterlimit:10;}
+    .st2{display:none;}
+    .st3{display:inline;}
+    .st4{fill:url(#SVGID_2_);}
+    .st5{fill:#03AF6A;}
+    .st6{display:none;fill:url(#SVGID_4_);}
+</style>
+        <g>
+            <path class="st0" d="M346.1,48.1c4.6,0,7.7,0.8,9.8,1.8l2.8-13c-3.7-1.4-8.8-2.2-13.4-2.2c-21,0-32.2,13.5-32.2,29.9
+		c0,17.7,11.6,28.8,29.8,28.8c6.6,0,12.5-1.2,15.6-2.6l-2-12.9c-2.6,1.1-5.9,1.8-10,1.8c-8.5,0-15.4-5.4-15.4-15.8
+		C331,54.7,336.9,48.1,346.1,48.1z"/>
+            <path class="st0" d="M283.1,34.7c-19.5,0-28.4,15.8-28.4,30c0,17.6,10.9,28.7,30,28.7c7.6,0,14.6-1.2,20.4-3.4L302.8,78
+		c-4.7,1.5-9.5,2.3-15.5,2.3c-8.1,0-15.3-3.4-15.9-10.7h36.2c0.2-1.2,0.6-3.9,0.6-6.9C308.2,48.8,301.3,34.7,283.1,34.7z
+		 M271.3,57.7c0.5-4.7,3.5-11.4,10.8-11.4c8,0,9.9,7.2,9.9,11.4C292,57.7,271.3,57.7,271.3,57.7z"/>
+            <path class="st0" d="M130.8,79.6c-8.5,0-15.4-5.4-15.4-15.8c-0.1-9.2,5.8-15.8,15-15.8c4.6,0,7.7,0.8,9.8,1.8l2.8-13
+		c-3.7-1.4-8.8-2.2-13.4-2.2c-10.2,0-18.1,3.2-23.5,8.3c0.7,3.3,0.9,6.8,0.9,10.3c0,9.4-2.3,18.1-6.4,25.9
+		c4.7,9,14.1,14.2,26.5,14.2c6.6,0,12.6-1.2,15.6-2.6l-2.1-12.9C138.2,78.9,135,79.6,130.8,79.6z"/>
+            <path class="st0" d="M172.3,34.7c-18.1,0-30,11.6-30,29.8c0,18.2,12.6,29,29.1,29c15.1,0,29.7-9.4,29.7-30
+		C201.1,46.5,189.6,34.7,172.3,34.7z M171.9,80.9c-7.4,0-11.5-7.2-11.5-16.9c0-8.3,3.1-16.9,11.5-16.9c7.9,0,11.1,8.5,11.1,16.9
+		C183,74.1,178.7,80.9,171.9,80.9z"/>
+            <path class="st0" d="M401.1,48.8V35.9h-12.5V19.8l-17.1,3.9v12.2h-7.5l-2.5,12.9h10v23c0,7.9,1.6,13.3,4.9,16.7
+		c2.8,2.9,7.5,4.8,13.1,4.8c5,0,9.1-0.6,11.4-1.5l-0.1-13.2c-1.2,0.2-3,0.4-5.1,0.4c-5.3,0-6.9-3.1-6.9-9.9V48.8H401.1z"/>
+            <rect x="206.1" y="10.5" class="st0" width="17.5" height="81.7"/>
+            <rect x="232.1" y="10.5" class="st0" width="17.5" height="81.7"/>
+        </g>
+        <g>
+
+            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="53.26" y1="2094.3252" x2="53.26" y2="1989.8053" gradientTransform="matrix(1 0 0 1 0 -1987.8053)">
+                <stop  offset="0" style="stop-color:#92B53E"/>
+                <stop  offset="1" style="stop-color:#47B249"/>
+            </linearGradient>
+            <circle class="st1" cx="53.3" cy="54.3" r="52.3"/>
+            <g class="st2">
+                <g class="st3">
+
+                    <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="53.26" y1="2094.3252" x2="53.26" y2="1989.8053" gradientTransform="matrix(1 0 0 1 0 -1987.8053)">
+                        <stop  offset="0" style="stop-color:#92B53E"/>
+                        <stop  offset="1" style="stop-color:#47B249"/>
+                    </linearGradient>
+                    <circle id="SVGID_3_" class="st4" cx="53.3" cy="54.3" r="52.3"/>
+                </g>
+            </g>
+            <g>
+                <path class="st5" d="M16,49.9c-6.3,0-11.5,5.8-11.5,16c0,8.4,4.2,14.9,11.5,14.9c4.5,0,8.1-3,9.2-7.2c0.5-1.2,0.5-3.1,0.5-4.6
+			v-8.3c0-1.2-0.1-2.3-0.4-3.2C24.2,53,20.9,49.9,16,49.9z"/>
+                <path class="st5" d="M47.2,66.4c0-18.2,12-29.8,30-29.8c13.7,0,23.7,7.4,27.3,18.8c0-0.6,0.1-1.2,0.1-1.8
+			C104.5,25.2,81.4,2,52.8,2C29.6,2,9.9,17.3,3.3,38.4c2.8-1.2,5.8-1.8,9-1.8c7.7,0,12.6,3.3,15.4,8H28l0.5-6.7h15.2
+			c-0.2,3.5-0.5,8.3-0.5,16.6V86c0,6.9-0.9,13-3.2,17.9c4,1,8.3,1.6,12.7,1.6c12.2,0,23.3-4.2,32.2-11.2c-2.8,0.8-5.7,1.1-8.7,1.1
+			C59.9,95.4,47.2,84.6,47.2,66.4z"/>
+                <path class="st5" d="M26.1,86.3h-0.2c-1.9,2.7-4.5,4.7-7.6,5.9c2,1.8,4.2,3.4,6.5,4.9c0.9-2,1.4-4.4,1.4-7.2L26.1,86.3
+			C26,86.3,26.1,86.3,26.1,86.3z"/>
+                <path class="st5" d="M76.8,49.1c-8.4,0-11.5,8.6-11.5,16.9c0,9.7,4.1,16.9,11.5,16.9c6.8,0,11.2-6.8,11.2-16.9
+			C87.9,57.6,84.7,49.1,76.8,49.1z"/>
+            </g>
+
+            <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="53.26" y1="2094.8252" x2="53.26" y2="1989.3053" gradientTransform="matrix(1 0 0 1 0 -1987.8053)">
+                <stop  offset="0" style="stop-color:#92B53E"/>
+                <stop  offset="1" style="stop-color:#47B249"/>
+            </linearGradient>
+            <path class="st6" d="M53.3,107C24.1,107,0.5,83.4,0.5,54.3S24.2,1.5,53.3,1.5S106,25.2,106,54.3S82.4,107,53.3,107z"/>
+        </g>
+        <path class="st0" d="M413.5,84.2v1.3h-2.4v6.3h-1.5v-6.3h-2.4v-1.3H413.5z M421.7,91.9l-0.3-4.5c0-0.6,0-1.3-0.1-2.1h-0.1
+	c-0.2,0.7-0.4,1.6-0.6,2.3l-1.4,4.2h-1.6l-1.4-4.3c-0.1-0.6-0.4-1.5-0.5-2.2h-0.1c0,0.7,0,1.4-0.1,2.1l-0.3,4.5h-1.5l0.6-7.6h2.3
+	l1.3,3.7c0.2,0.6,0.3,1.2,0.5,1.9h0c0.2-0.7,0.4-1.3,0.5-1.9l1.3-3.8h2.2l0.6,7.6H421.7z"/>
+</svg>
+</a>
+                    </div>
+                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                        Sign in to your account
+                    </h2>
+                    <p class="mt-2 text-center text-sm text-gray-600 max-w">
+                        Or
+                        <!-- space -->
+                        <a href="https://gocollect.com/pricing" class="font-medium text-green-500 hover:text-green-400">
+                            find an option to meet your needs
+                        </a>
+                    </p>
+                </div>
+    </div>
+
+    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow overflow-hidden sm:rounded-lg">
+        <form method="POST" action="https://gocollect.com/login">
+                <input type="hidden" name="_token" value="w9dMHRKn07E0mksOiomx2pbNWUcaPPaodBUNgCuE">                <input type="hidden" name="timezone" id="timezone">
+
+                <div>
+                    <label class="block font-medium text-sm text-gray-700" for="email">
+    Email
+</label>
+                    <input  class="border-gray-300 focus:ring-green-500 focus:border-green-500 rounded-md shadow-sm block mt-1 w-full" id="email" type="email" name="email" required="required" autofocus="autofocus">
+                </div>
+
+                <div class="mt-4">
+                    <label class="block font-medium text-sm text-gray-700" for="password">
+    Password
+</label>
+                    <input  class="border-gray-300 focus:ring-green-500 focus:border-green-500 rounded-md shadow-sm block mt-1 w-full" id="password" type="password" name="password" required="required" autocomplete="current-password">
+                </div>
+
+                <div class="block mt-4">
+                    <label for="remember_me" class="flex items-center">
+                        <input type="checkbox" class="rounded border-gray-300 text-green-500 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50" id="remember_me" name="remember">
+                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-end mt-4">
+                                            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="https://gocollect.com/forgot-password">
+                            Forgot your password?
+                        </a>
+                    
+                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-green-500 border border-transparent rounded-md font-semibold text-sm text-white capitalize tracking-widest hover:bg-green-600 active:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 ml-4">
+    Log in
+</button>
+                </div>
+            </form>
+    </div>
+</div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
+    <script>
+        document.getElementById('timezone').value = moment.tz.guess();
+    </script>
+        </div>
+    </body>
+</html>

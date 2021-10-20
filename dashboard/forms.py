@@ -39,7 +39,7 @@ class SnipeForm(forms.ModelForm):
             'highest_grade',
             'negative_words',
             'positive_words',
-            'image',
+           # 'image',
         ]
 
         widgets = {
@@ -62,8 +62,8 @@ class SnipeForm(forms.ModelForm):
             'negative_words': forms.TextInput(attrs={
                 'class': 'form-control form-control-solid',
             }),
-            'image': forms.FileInput(attrs={
-                'class': 'form-control form-control-solid',
-            })
+            #'image': forms.FileInput(attrs={
+            #    'class': 'form-control form-control-solid',
+            #})
 
         }
