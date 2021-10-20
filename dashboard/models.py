@@ -7,32 +7,12 @@ def Reverse(tuples):
     return new_tup
 
 
+grades_list = []
+for i in range(0, 101):
+    grades_list.append((str((float(i/10))), str(float(i/10))))
 
-GRADES = (
-    ('0.5', '0.5'),
-    ('1.0', '1.0'),
-    ('1.5', '1.5'),
-    ('1.8', '1.8'),
-    ('2.0', '2.0'),
-    ('2.5', '2.5'),
-    ('3.0', '3.0'),
-    ('3.5', '3.5'),
-    ('4.0', '4.0'),
-    ('4.5', '4.5'),
-    ('5.0', '5.0'),
-    ('5.5', '5.5'),
-    ('6.0', '6.0'),
-    ('6.5', '6.5'),
-    ('7.0', '7.0'),
-    ('7.5', '7.5'),
-    ('8.0', '8.0'),
-    ('8.5', '8.5'),
-    ('9.0', '9.0'),
-    ('9.2', '9.2'),
-    ('9.4', '9.4'),
-    ('9.6', '9.6'),
-    ('9.8', '9.8'),
-)
+GRADES = tuple(grades_list)
+
 
 PERMISSION_LEVEL = (
     ('r', 'Readonly'),
@@ -52,8 +32,8 @@ class SnipeModel(models.Model):
     gocollect_link = models.URLField(null=False, blank=False)
     price_percentage = models.IntegerField(null=False)
     floor_price = models.IntegerField(null=True, blank=False, default=85)
-    lowest_grade = models.CharField(default='0', choices=GRADES, blank=False, null=False, max_length=255)
-    highest_grade = models.CharField(default='10',choices=Reverse(GRADES), blank=False, null=False, max_length=255)
+    lowest_grade = models.CharField(default='0.0', choices=Reverse(GRADES), blank=False, null=False, max_length=255)
+    highest_grade = models.CharField(default='10.0',choices=Reverse(GRADES), blank=False, null=False, max_length=255)
     negative_words = models.CharField(blank=True, null=True, max_length=255)
     positive_words = models.CharField(blank=True, null=True, max_length=255)
     image = models.ImageField(upload_to='image', blank=True, null=True)

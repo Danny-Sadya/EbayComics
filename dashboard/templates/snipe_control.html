@@ -227,7 +227,6 @@
                                     </div>
                                     <button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">Delete Selected</button>
                                 </div>
-
                                 <script>
                                     $(document).on("click", "#MyButton", function (event) {
                                         document.getElementById('go-collect-new-data').innerHTML = ''
@@ -327,6 +326,12 @@
                                                         </form>
                                                     </div>
                                                     <div id="go-collect-new-data" class="col-6">
+                                                        {% if not messages %}
+                                                            {% else %}
+                                                                {% for message in messages %}
+                                                                    {{ message }}
+                                                            {% endfor %}
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </div>
@@ -363,7 +368,7 @@
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                                 <a href="../../demo2/dist/apps/user-management/users/view.html">
                                                     <div class="symbol-label">
-                                                        <img src="{{ item.image.url }}" alt="image" class="w-100">
+                                                        <img src="assets/media/avatars/150-1.jpg" alt="image" class="w-100">
                                                     </div>
                                                 </a>
                                             </div>

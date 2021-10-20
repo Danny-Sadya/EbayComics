@@ -49,25 +49,28 @@ def get_title_values_and_grades_img(url):
                 'img', class_='mx-auto w-48 h-auto rounded-md shadow-md').get('src')
         except Exception as ex:
             img = None
-
-        containers = soup.find('ul', class_='border-t border-gray-200 divide-y divide-gray-200').find_all('li')
-        values_and_grades = []
+            
         try:
-            for container in containers:
-                try:
-                    grade = float(
-                        container.find('div', class_='col-span-2 md:col-span-1 text-2xl md:text-3xl').text.strip())
-                    value = container.find('div', class_="text-right grid grid-cols-12 gap-x-4").find_all('div',
-                                                                                                          class_='col-span-4')[
-                        -1].find('div', class_='text-sm text-gray-600')
-                    # if value is None:
-                    #     value = container.find('div', class_='col-5 col-xl-6 pr-xl-0 text-right').find('div', class_='col-12 col-xl-7 text-muted')
-                    value = value.text.strip().rstrip('*').lstrip('$')
-                    value = float(''.join(value.split(',')).replace(',', '.'))
-                    values_and_grades.append((grade, value))
-                except Exception:
-                    pass
-
+            containers = soup.find('ul', class_='border-t border-gray-200 divide-y divide-gray-200').find_all('li')
+            values_and_grades = []
+            try:
+                for container in containers:
+                    try:
+                        grade = float(
+                            container.find('div', class_='col-span-2 md:col-span-1 text-2xl md:text-3xl').text.strip())
+                        value = container.find('div', class_="text-right grid grid-cols-12 gap-x-4").find_all('div',
+                                                                                                              class_='col-span-4')[
+                            -1].find('div', class_='text-sm text-gray-600')
+                        # if value is None:
+                        #     value = container.find('div', class_='col-5 col-xl-6 pr-xl-0 text-right').find('div', class_='col-12 col-xl-7 text-muted')
+                        value = value.text.strip().rstrip('*').lstrip('$')
+                        value = float(''.join(value.split(',')).replace(',', '.'))
+                        values_and_grades.append((grade, value))
+                    except Exception:
+                        pass
+    
+            except Exception:
+                values_and_grades = None
         except Exception:
             values_and_grades = None
 
@@ -83,4 +86,5 @@ def get_title_values_and_grades_img(url):
 
 if __name__ == '__main__':
     pass
+
 
