@@ -41,13 +41,21 @@ def get_comics_title(url):
             soup = BeautifulSoup(driver.page_source, 'lxml')
             title = soup.find('div', class_='bg-white mb-4 bg-gradient-to-t from-gray-50 to-gray-100').find(
                 'div', class_='text-xl sm:text-2xl font-extrabold tracking-tight text-gray-900').text.strip()
+
+        try:
+            soup = BeautifulSoup(driver.page_source, 'lxml')
+            img = soup.find('div', class_='p-4 grid grid-cols-12 gap-8 flex items-center').find(
+                'img', class_='mx-auto w-48 h-auto rounded-md shadow-md').get('src')
+        except Exception as ex:
+            img = None
+
     
     except:
         pass
     finally:
         driver.close()
         driver.quit()
-        return title
+        return title, img
 
 
 if __name__ == "__main__":
