@@ -34,7 +34,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="pBGyyAtwTR9z3FpTQHr7rsuRL6BkGrWF0O4ew9B4">
+    <meta name="csrf-token" content="iHTWHCFgilV6ecRWtJVuLPeLuUgE7X85I0NOPgVQ">
 
     <title>Avengers #5 Value - GoCollect</title>
     
@@ -256,7 +256,7 @@
                     <div class="flex-1 flex flex-row-reverse items-center">
 
                                                     <div class="flex-shrink-0 pl-4">
-                                <div wire:id="FBny0hUVZ4m95q96V0Nr" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;FBny0hUVZ4m95q96V0Nr&quot;,&quot;name&quot;:&quot;cams.comics.cert-lookup&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;5c65f525&quot;,&quot;data&quot;:{&quot;loadingResults&quot;:false,&quot;displayResults&quot;:false,&quot;certificationCompany&quot;:null,&quot;certificationCompanyKey&quot;:null,&quot;goToItemIfFound&quot;:null,&quot;imageUrl&quot;:null,&quot;imageUpload&quot;:null,&quot;imageUploading&quot;:false,&quot;imageUploadUrl&quot;:null,&quot;displayLookupResults&quot;:null,&quot;cgcLookup&quot;:null,&quot;cgcLookupFailed&quot;:null,&quot;buttonComponent&quot;:null,&quot;render_view&quot;:&quot;livewire.cams.comics.cert-lookup-slideover&quot;,&quot;cert_lookup_via_scan&quot;:false},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;315e81f824ad533fac7541c339868798dba88d0d19782873163fdab46c98e25b&quot;}}" x-data="{ cert_lookup_open: false }" @keydown.window.escape="cert_lookup_open = false">
+                                <div wire:id="VM682mze1Lw4DskJ4PaZ" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;VM682mze1Lw4DskJ4PaZ&quot;,&quot;name&quot;:&quot;cams.comics.cert-lookup&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;1692d857&quot;,&quot;data&quot;:{&quot;loadingResults&quot;:false,&quot;displayResults&quot;:false,&quot;certificationCompany&quot;:null,&quot;certificationCompanyKey&quot;:null,&quot;goToItemIfFound&quot;:null,&quot;imageUrl&quot;:null,&quot;imageUpload&quot;:null,&quot;imageUploading&quot;:false,&quot;imageUploadUrl&quot;:null,&quot;displayLookupResults&quot;:null,&quot;cgcLookup&quot;:null,&quot;cgcLookupFailed&quot;:null,&quot;buttonComponent&quot;:null,&quot;render_view&quot;:&quot;livewire.cams.comics.cert-lookup-slideover&quot;,&quot;cert_lookup_via_scan&quot;:false},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;b796bf4ddc05aa6d362720e503e6c5a87959200d8503ba8b96d494a715659d22&quot;}}" x-data="{ cert_lookup_open: false }" @keydown.window.escape="cert_lookup_open = false">
     <button type="button" @click.prevent="cert_lookup_open = true" class="relative inline-flex items-center h-8 px-4  rounded-md sm:rounded-full border border-white bg-gray-900 text-sm font-medium text-white focus:z-10 focus:outline-none focus:ring-1 focus:ring-0 focus:border-green-500">
         Cert Search
         <svg xmlns="http://www.w3.org/2000/svg" class="-mr-1 ml-3 h-5 w-5 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -295,7 +295,7 @@
                             <div class="py-6 bg-white shadow-lg">
                                 <div class="px-4 sm:px-6">
                                     <form action="https://gocollect.com/comics" method="GET">
-                                        <input type="hidden" name="_token" value="pBGyyAtwTR9z3FpTQHr7rsuRL6BkGrWF0O4ew9B4">                                        <input type="hidden" name="certification_company" value="cgc">
+                                        <input type="hidden" name="_token" value="iHTWHCFgilV6ecRWtJVuLPeLuUgE7X85I0NOPgVQ">                                        <input type="hidden" name="certification_company" value="cgc">
                                         <label for="cgc_certification_key" class="block text-sm font-medium text-gray-700">
                                             CGC Lookup
                                         </label>
@@ -403,7 +403,7 @@
 
 </div>
 
-<!-- Livewire Component wire-end:FBny0hUVZ4m95q96V0Nr -->                            </div>
+<!-- Livewire Component wire-end:VM682mze1Lw4DskJ4PaZ -->                            </div>
                         
                                                     <form class="bg-gray-900 max-w-60 flex flex-grow-1" action="https://gocollect.com/comics/search" method="GET">
                                 <div class="relative text-white">
@@ -421,7 +421,7 @@
             </div>
 
             <main>
-                <div wire:id="BzXuviqL3X210chvD8KF" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;BzXuviqL3X210chvD8KF&quot;,&quot;name&quot;:&quot;marketing.comic-item-heading&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;5f645515&quot;,&quot;data&quot;:{&quot;itemId&quot;:84698,&quot;breadcrumbs&quot;:{&quot;https:\/\/gocollect.com\/comics&quot;:&quot;Comics&quot;,&quot;https:\/\/gocollect.com\/comics\/avengers-the&quot;:&quot;Avengers&quot;,&quot;https:\/\/gocollect.com\/comic\/avengers-5&quot;:&quot;Avengers #5&quot;}},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;d527cbd1007c5f23914eb0545faaca736f4eec3f9d4146bbdec1e83e4f4c9294&quot;}}">
+                <div wire:id="HjQVH4ny5cYA75f6TV4g" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;HjQVH4ny5cYA75f6TV4g&quot;,&quot;name&quot;:&quot;marketing.comic-item-heading&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;5f645515&quot;,&quot;data&quot;:{&quot;itemId&quot;:84698,&quot;breadcrumbs&quot;:{&quot;https:\/\/gocollect.com\/comics&quot;:&quot;Comics&quot;,&quot;https:\/\/gocollect.com\/comics\/avengers-the&quot;:&quot;Avengers&quot;,&quot;https:\/\/gocollect.com\/comic\/avengers-5&quot;:&quot;Avengers #5&quot;}},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;1b03ce0aec5d59560a0de279a75f3e770bd678860fe009adced86d3a38574e92&quot;}}">
     <div class="bg-gray-900 border-b border-white">
         <div class="max-w-7xl mx-auto">
             <div class="pt-2 pb-8 lg:pb-16 px-4 sm:px-6 lg:px-8">
@@ -547,7 +547,7 @@
         </div>
     </div>
 
-<!-- Livewire Component wire-end:BzXuviqL3X210chvD8KF -->
+<!-- Livewire Component wire-end:HjQVH4ny5cYA75f6TV4g -->
     <div class="bg-gray-50">
         <div class="max-w-screen lg:max-w-7xl mx-auto py-4 md:py-6 sm:px-4">
 
@@ -557,7 +557,7 @@
                     <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900 sm:text-4xl sm:tracking-tight lg:text-4xl px-2 sm:px-0">What's it Worth?</h3>
                     <div class="mt-2 sm:mt-4 sm:space-x-8">
 
-                        <div wire:id="Xsh0u16Qikrex8ij0kCh" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;Xsh0u16Qikrex8ij0kCh&quot;,&quot;name&quot;:&quot;sold.sold-item-teaser&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[],&quot;path&quot;:&quot;https:\/\/gocollect.com\/comic\/avengers-5&quot;},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;ff0b0c45&quot;,&quot;data&quot;:{&quot;itemId&quot;:84698,&quot;fixedCertificationTypeSlug&quot;:&quot;label&quot;,&quot;fixedCertificationValueSlug&quot;:&quot;universal&quot;,&quot;certificationCompanySlug&quot;:&quot;cgc&quot;,&quot;analyzingCertificationTypeSlug&quot;:&quot;grade&quot;,&quot;analyzingCertificationValueSlug&quot;:null,&quot;soldExamplesCacheLifetime&quot;:14400,&quot;searchActive&quot;:false,&quot;expandWithoutSales&quot;:null,&quot;oneYearAvgs&quot;:[],&quot;ninetyDayAvgs&quot;:[],&quot;thirtyDayAvgs&quot;:[],&quot;interactionConfig&quot;:{&quot;type_ext&quot;:&quot;sold_item&quot;,&quot;pending_key&quot;:&quot;pending&quot;},&quot;page&quot;:1,&quot;paginators&quot;:{&quot;page&quot;:1},&quot;displayReady&quot;:false},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;23fbc2cb2dfbfb06e2dd24691f3e6771dd408e1b4f79765572d7c8a020e4ce80&quot;}}" wire:init="readyDisplay">
+                        <div wire:id="sSixQcy44YBjvkdcynJL" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;sSixQcy44YBjvkdcynJL&quot;,&quot;name&quot;:&quot;sold.sold-item-teaser&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[],&quot;path&quot;:&quot;https:\/\/gocollect.com\/comic\/avengers-5&quot;},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;755931f7&quot;,&quot;data&quot;:{&quot;itemId&quot;:84698,&quot;fixedCertificationTypeSlug&quot;:&quot;label&quot;,&quot;fixedCertificationValueSlug&quot;:&quot;universal&quot;,&quot;certificationCompanySlug&quot;:&quot;cgc&quot;,&quot;analyzingCertificationTypeSlug&quot;:&quot;grade&quot;,&quot;analyzingCertificationValueSlug&quot;:null,&quot;soldExamplesCacheLifetime&quot;:14400,&quot;searchActive&quot;:false,&quot;expandWithoutSales&quot;:null,&quot;oneYearAvgs&quot;:[],&quot;ninetyDayAvgs&quot;:[],&quot;thirtyDayAvgs&quot;:[],&quot;interactionConfig&quot;:{&quot;type_ext&quot;:&quot;sold_item&quot;,&quot;pending_key&quot;:&quot;pending&quot;},&quot;page&quot;:1,&quot;paginators&quot;:{&quot;page&quot;:1},&quot;displayReady&quot;:false},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;a307261936b74c4e8c43d240721b0a14a9865c1f5035f7fc63e42ea7571833d0&quot;}}" wire:init="readyDisplay">
 
     <div class="bg-white overflow-hidden shadow sm:rounded-lg">
         <div x-data="{
@@ -581,7 +581,7 @@
                         <span class="inline-block relative">
                             <span>Search <span class="hidden sm:inline">Sales</span></span>
                             <span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                                450
+                                452
                             </span>
                         </span>
                     </a>
@@ -655,10 +655,10 @@
     </div>
 </div>
 
-<!-- Livewire Component wire-end:Xsh0u16Qikrex8ij0kCh -->
+<!-- Livewire Component wire-end:sSixQcy44YBjvkdcynJL -->
                     </div>
                     <div class="mt-2 sm:mt-4 sm:space-x-8">
-                        <div wire:id="jcLWHdYRUni5jLdajzvK" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;jcLWHdYRUni5jLdajzvK&quot;,&quot;name&quot;:&quot;sale-examples.related-sale-examples&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;5f56cc0b&quot;,&quot;data&quot;:{&quot;currentPage&quot;:1,&quot;perPage&quot;:10,&quot;maxPages&quot;:10,&quot;cacheLifetime&quot;:3600,&quot;limitWidgetHeight&quot;:true,&quot;initialSaleExamplesCount&quot;:null,&quot;camGroupSlug&quot;:null,&quot;itemIds&quot;:[84698],&quot;currentTab&quot;:&quot;ebay-fixed&quot;,&quot;tabsMap&quot;:{&quot;ebay-fixed&quot;:&quot;eBay&quot;,&quot;premium-auctions&quot;:&quot;Premium Auctions&quot;,&quot;premium-fixed&quot;:&quot;Stores&quot;,&quot;ebay-auctions&quot;:&quot;eBay Auctions&quot;},&quot;displayReady&quot;:false,&quot;camSlug&quot;:&quot;comics&quot;},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;d6e644997bdf09de7e91742f0c6efb4acb313806319f6e2b660bf57b3b780856&quot;}}" wire:init="readyDisplay">
+                        <div wire:id="HQVqk0tF5blIM4iqahRv" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;HQVqk0tF5blIM4iqahRv&quot;,&quot;name&quot;:&quot;sale-examples.related-sale-examples&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;5f56cc0b&quot;,&quot;data&quot;:{&quot;currentPage&quot;:1,&quot;perPage&quot;:10,&quot;maxPages&quot;:10,&quot;cacheLifetime&quot;:3600,&quot;limitWidgetHeight&quot;:true,&quot;initialSaleExamplesCount&quot;:null,&quot;camGroupSlug&quot;:null,&quot;itemIds&quot;:[84698],&quot;currentTab&quot;:&quot;ebay-fixed&quot;,&quot;tabsMap&quot;:{&quot;ebay-fixed&quot;:&quot;eBay&quot;,&quot;premium-auctions&quot;:&quot;Premium Auctions&quot;,&quot;premium-fixed&quot;:&quot;Stores&quot;,&quot;ebay-auctions&quot;:&quot;eBay Auctions&quot;},&quot;displayReady&quot;:false,&quot;camSlug&quot;:&quot;comics&quot;},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;89aad78e90d614d34cea5cec98bc3119509573f44cc5bd285b35ce297b88c68a&quot;}}" wire:init="readyDisplay">
             <div class="h-full bg-white overflow-hidden shadow sm:rounded-lg overflow-hidden divide-y divide-gray-100" x-data="{
                     tab: 'ebay-fixed',
                     active: 'border-green-500 text-green-600 whitespace-nowrap py-3 px-2 border-b-2 font-medium text-sm',
@@ -743,12 +743,12 @@
 
 </div>
 
-<!-- Livewire Component wire-end:jcLWHdYRUni5jLdajzvK -->                    </div>
+<!-- Livewire Component wire-end:HQVqk0tF5blIM4iqahRv -->                    </div>
                 </div>
                 <div class="col-span-12 lg:col-span-6">
                     <h3 class="mt-8 lg:mt-0 text-2xl sm:text-3xl font-extrabold text-gray-900 sm:text-4xl sm:tracking-tight lg:text-4xl px-2 sm:px-0">Graded Population</h3>
                     <div class="mt-2 sm:mt-4">
-                        <div wire:id="oqQ44Zj4KvRuVjbFu7Uo" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;oqQ44Zj4KvRuVjbFu7Uo&quot;,&quot;name&quot;:&quot;cams.comics.item-census&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;a25a759d&quot;,&quot;data&quot;:{&quot;itemId&quot;:84698,&quot;soldExamplesCacheLifetime&quot;:14400,&quot;cgc_label_conversions&quot;:{&quot;Modern&quot;:&quot;Universal&quot;,&quot;Universal&quot;:&quot;Universal&quot;,&quot;Signature&quot;:&quot;Signature&quot;,&quot;Restored&quot;:&quot;Restored&quot;,&quot;Qualified&quot;:&quot;Qualified&quot;,&quot;Conserved&quot;:&quot;Conserved&quot;},&quot;displayReady&quot;:false},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;459aa1636588d173845aa9767d098205841ced3c1946ba45649e2a6572e9d8c7&quot;}}" wire:init="readyDisplay">
+                        <div wire:id="EpkSTVPbK29DIX27eEFM" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;EpkSTVPbK29DIX27eEFM&quot;,&quot;name&quot;:&quot;cams.comics.item-census&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;a25a759d&quot;,&quot;data&quot;:{&quot;itemId&quot;:84698,&quot;soldExamplesCacheLifetime&quot;:14400,&quot;cgc_label_conversions&quot;:{&quot;Modern&quot;:&quot;Universal&quot;,&quot;Universal&quot;:&quot;Universal&quot;,&quot;Signature&quot;:&quot;Signature&quot;,&quot;Restored&quot;:&quot;Restored&quot;,&quot;Qualified&quot;:&quot;Qualified&quot;,&quot;Conserved&quot;:&quot;Conserved&quot;},&quot;displayReady&quot;:false},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;baa8843770eac279d96b56ebd84555d2a06374715d31080e8a40d64e7cf53deb&quot;}}" wire:init="readyDisplay">
 
 
     <div class="bg-white overflow-hidden shadow sm:rounded-lg">
@@ -785,7 +785,7 @@
 
     </div>
 
-<!-- Livewire Component wire-end:oqQ44Zj4KvRuVjbFu7Uo -->                    </div>
+<!-- Livewire Component wire-end:EpkSTVPbK29DIX27eEFM -->                    </div>
                 </div>
             </div>
         </div>
@@ -814,10 +814,10 @@
                                     <div class="">
                                         <dl class="mx-4 mt-1 flex-grow flex flex-row justify-between">
                                             <dd class="w-full text-gray-500 text-xs">
-                                                2,240 sold
+                                                2,241 sold
                                             </dd>
                                             <dd class="w-full pl-1 text-gray-500 text-xs truncate">
-                                                23 available
+                                                26 available
                                             </dd>
                                         </dl>
                                     </div>
@@ -834,10 +834,10 @@
                                     <div class="">
                                         <dl class="mx-4 mt-1 flex-grow flex flex-row justify-between">
                                             <dd class="w-full text-gray-500 text-xs">
-                                                946 sold
+                                                947 sold
                                             </dd>
                                             <dd class="w-full pl-1 text-gray-500 text-xs truncate">
-                                                10 available
+                                                11 available
                                             </dd>
                                         </dl>
                                     </div>
@@ -857,7 +857,7 @@
                                                 696 sold
                                             </dd>
                                             <dd class="w-full pl-1 text-gray-500 text-xs truncate">
-                                                2 available
+                                                3 available
                                             </dd>
                                         </dl>
                                     </div>
@@ -874,10 +874,10 @@
                                     <div class="">
                                         <dl class="mx-4 mt-1 flex-grow flex flex-row justify-between">
                                             <dd class="w-full text-gray-500 text-xs">
-                                                2,007 sold
+                                                2,008 sold
                                             </dd>
                                             <dd class="w-full pl-1 text-gray-500 text-xs truncate">
-                                                31 available
+                                                45 available
                                             </dd>
                                         </dl>
                                     </div>
@@ -894,10 +894,10 @@
                                     <div class="">
                                         <dl class="mx-4 mt-1 flex-grow flex flex-row justify-between">
                                             <dd class="w-full text-gray-500 text-xs">
-                                                493 sold
+                                                494 sold
                                             </dd>
                                             <dd class="w-full pl-1 text-gray-500 text-xs truncate">
-                                                7 available
+                                                10 available
                                             </dd>
                                         </dl>
                                     </div>
@@ -914,10 +914,10 @@
                                     <div class="">
                                         <dl class="mx-4 mt-1 flex-grow flex flex-row justify-between">
                                             <dd class="w-full text-gray-500 text-xs">
-                                                570 sold
+                                                571 sold
                                             </dd>
                                             <dd class="w-full pl-1 text-gray-500 text-xs truncate">
-                                                4 available
+                                                5 available
                                             </dd>
                                         </dl>
                                     </div>
@@ -934,10 +934,10 @@
                                     <div class="">
                                         <dl class="mx-4 mt-1 flex-grow flex flex-row justify-between">
                                             <dd class="w-full text-gray-500 text-xs">
-                                                452 sold
+                                                453 sold
                                             </dd>
                                             <dd class="w-full pl-1 text-gray-500 text-xs truncate">
-                                                3 available
+                                                4 available
                                             </dd>
                                         </dl>
                                     </div>
@@ -954,10 +954,10 @@
                                     <div class="">
                                         <dl class="mx-4 mt-1 flex-grow flex flex-row justify-between">
                                             <dd class="w-full text-gray-500 text-xs">
-                                                950 sold
+                                                953 sold
                                             </dd>
                                             <dd class="w-full pl-1 text-gray-500 text-xs truncate">
-                                                33 available
+                                                38 available
                                             </dd>
                                         </dl>
                                     </div>
@@ -994,10 +994,10 @@
                                     <div class="">
                                         <dl class="mx-4 mt-1 flex-grow flex flex-row justify-between">
                                             <dd class="w-full text-gray-500 text-xs">
-                                                511 sold
+                                                512 sold
                                             </dd>
                                             <dd class="w-full pl-1 text-gray-500 text-xs truncate">
-                                                10 available
+                                                14 available
                                             </dd>
                                         </dl>
                                     </div>
@@ -1037,7 +1037,7 @@
                                                 397 sold
                                             </dd>
                                             <dd class="w-full pl-1 text-gray-500 text-xs truncate">
-                                                8 available
+                                                9 available
                                             </dd>
                                         </dl>
                                     </div>
@@ -1053,7 +1053,7 @@
     
     <div class="py-8 border-t border-gray-300 bg-gradient-to-t from-white to-gray-50">
         <div class="max-w-7xl mx-auto">
-            <div wire:id="uJfLe9omJeQysy8YHgvM" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;uJfLe9omJeQysy8YHgvM&quot;,&quot;name&quot;:&quot;marketing.blog-posts&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;fc0f6ee8&quot;,&quot;data&quot;:{&quot;blog_posts&quot;:null,&quot;camId&quot;:1,&quot;display&quot;:{&quot;cols&quot;:&quot;3&quot;,&quot;heading&quot;:&quot;From the Blog&quot;,&quot;subheading&quot;:&quot;Recent Comic News and Discussions&quot;,&quot;image_height&quot;:&quot;36&quot;,&quot;max_posts&quot;:9},&quot;defaultDisplay&quot;:{&quot;cols&quot;:&quot;1&quot;,&quot;heading&quot;:null,&quot;subheading&quot;:null,&quot;image_height&quot;:&quot;36&quot;,&quot;max_posts&quot;:&quot;10&quot;}},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;5cf9e7f8190298fbf1f4d72ee621f8f2dbade23407a4e75152e048226a2792c7&quot;}}">
+            <div wire:id="yNK4FUEq8NdeOS9rkUp8" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;yNK4FUEq8NdeOS9rkUp8&quot;,&quot;name&quot;:&quot;marketing.blog-posts&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;comic\/avengers-5&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;46cc1c44&quot;,&quot;data&quot;:{&quot;blog_posts&quot;:null,&quot;camId&quot;:1,&quot;display&quot;:{&quot;cols&quot;:&quot;3&quot;,&quot;heading&quot;:&quot;From the Blog&quot;,&quot;subheading&quot;:&quot;Recent Comic News and Discussions&quot;,&quot;image_height&quot;:&quot;36&quot;,&quot;max_posts&quot;:9},&quot;defaultDisplay&quot;:{&quot;cols&quot;:&quot;1&quot;,&quot;heading&quot;:null,&quot;subheading&quot;:null,&quot;image_height&quot;:&quot;36&quot;,&quot;max_posts&quot;:&quot;10&quot;}},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;88eff02203173f7c650251144d3a0c67914256ea83724308e7bc6f65ed32db46&quot;}}">
     <div class="">
         <div class="text-center">
                             <h4 class="text-gray-900 text-3xl font-bold tracking-tight">
@@ -1065,6 +1065,146 @@
                     </div>
     </div>
     <div class="mt-2 lg:mt-8 grid grid-cols-3 sm:gap-8 sm:px-8">
+                                <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
+                <div class="flex-shrink-0">
+                                            <img class="h-36 w-full object-cover" src="https://i1.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/102121C-1.jpg?fit=5000%2C2617&ssl=1" alt="">
+                                    </div>
+                <div class="flex-1 bg-white p-6 pb-12 sm:pb-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <a href="https://blog.gocollect.com/the-return-of-the-punisher-punisher-1/" target="_blank" class="block mt-2">
+                            <p class="text-xl font-semibold text-gray-900 truncate">
+                                The Return of the Punisher: Punisher #1
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <time datetime="2021-10-24">
+                                    Oct 24, 2021
+                                </time>
+                            </div>
+                            <p class="mt-3 text-base text-gray-500">
+                                <p>Recently, Forbes spoke to Jon Bernthal about playing The Punisher, &#8220;As far as going on in the future, it’s a character that I really feel like I have sort of in my bones&hellip;</p>
+
+                            </p>
+                        </a>
+                    </div>
+                    <div class="mt-6 flex items-center">
+                        <a href="https://blog.gocollect.com/the-return-of-the-punisher-punisher-1/" target="_blank" class="text-sm text-green-500 hover:text-green-400 block mt-2">
+                            Continue reading
+                        </a>
+                    </div>
+                </div>
+            </div>
+                                <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
+                <div class="flex-shrink-0">
+                                            <img class="h-36 w-full object-cover" src="https://i0.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/102121B-1-1.jpg?fit=5000%2C2617&ssl=1" alt="">
+                                    </div>
+                <div class="flex-1 bg-white p-6 pb-12 sm:pb-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <a href="https://blog.gocollect.com/motor-city-comic-con-a-report-from-behind-the-curtain/" target="_blank" class="block mt-2">
+                            <p class="text-xl font-semibold text-gray-900 truncate">
+                                Motor City Comic Con&#8230; A Report from Behind the Curtain
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <time datetime="2021-10-22">
+                                    Oct 22, 2021
+                                </time>
+                            </div>
+                            <p class="mt-3 text-base text-gray-500">
+                                <p>Regular visitors have noticed new things happening with GoCollect.  We are constantly evolving to give you what you need to know because knowledge is power! On October 15-17 I spent the whole&hellip;</p>
+
+                            </p>
+                        </a>
+                    </div>
+                    <div class="mt-6 flex items-center">
+                        <a href="https://blog.gocollect.com/motor-city-comic-con-a-report-from-behind-the-curtain/" target="_blank" class="text-sm text-green-500 hover:text-green-400 block mt-2">
+                            Continue reading
+                        </a>
+                    </div>
+                </div>
+            </div>
+                                <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
+                <div class="flex-shrink-0">
+                                            <img class="h-36 w-full object-cover" src="https://i0.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/102121A.jpg?fit=5000%2C2617&ssl=1" alt="">
+                                    </div>
+                <div class="flex-1 bg-white p-6 pb-12 sm:pb-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <a href="https://blog.gocollect.com/fandome-reaction-silver-age-batman-rogues-gallery/" target="_blank" class="block mt-2">
+                            <p class="text-xl font-semibold text-gray-900 truncate">
+                                Fandome Reaction: Silver Age Batman Rogues Gallery
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <time datetime="2021-10-22">
+                                    Oct 22, 2021
+                                </time>
+                            </div>
+                            <p class="mt-3 text-base text-gray-500">
+                                <p>The Batman is coming, and the heart-pounding trailer is casting a massive spotlight on three classic villains from the Silver Age Batman Rogues Gallery.</p>
+
+                            </p>
+                        </a>
+                    </div>
+                    <div class="mt-6 flex items-center">
+                        <a href="https://blog.gocollect.com/fandome-reaction-silver-age-batman-rogues-gallery/" target="_blank" class="text-sm text-green-500 hover:text-green-400 block mt-2">
+                            Continue reading
+                        </a>
+                    </div>
+                </div>
+            </div>
+                                <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
+                <div class="flex-shrink-0">
+                                            <img class="h-36 w-full object-cover" src="https://i0.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/102121E.jpg?fit=2500%2C1308&ssl=1" alt="">
+                                    </div>
+                <div class="flex-1 bg-white p-6 pb-12 sm:pb-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <a href="https://blog.gocollect.com/hottest-comics-10-21-moon-knight-and-spider-miles/" target="_blank" class="block mt-2">
+                            <p class="text-xl font-semibold text-gray-900 truncate">
+                                Hottest Comics 10/21: Moon Knight and Spider-Miles
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <time datetime="2021-10-21">
+                                    Oct 21, 2021
+                                </time>
+                            </div>
+                            <p class="mt-3 text-base text-gray-500">
+                                <p>Moon Knight drew the attention of many buyers this week, but Ultimate Fallout #4 regained its momentum, putting it hot on MK #1’s trail. Welcome to the Hottest Comics for the week&hellip;</p>
+
+                            </p>
+                        </a>
+                    </div>
+                    <div class="mt-6 flex items-center">
+                        <a href="https://blog.gocollect.com/hottest-comics-10-21-moon-knight-and-spider-miles/" target="_blank" class="text-sm text-green-500 hover:text-green-400 block mt-2">
+                            Continue reading
+                        </a>
+                    </div>
+                </div>
+            </div>
+                                <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
+                <div class="flex-shrink-0">
+                                            <img class="h-36 w-full object-cover" src="https://i1.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/101921C.jpg?fit=2500%2C1308&ssl=1" alt="">
+                                    </div>
+                <div class="flex-1 bg-white p-6 pb-12 sm:pb-6 flex flex-col justify-between">
+                    <div class="flex-1">
+                        <a href="https://blog.gocollect.com/ghost-rider-is-burning-up-the-charts-again/" target="_blank" class="block mt-2">
+                            <p class="text-xl font-semibold text-gray-900 truncate">
+                                Ghost Rider is Burning Up The Charts Again
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <time datetime="2021-10-21">
+                                    Oct 21, 2021
+                                </time>
+                            </div>
+                            <p class="mt-3 text-base text-gray-500">
+                                <p>Once again, we seem to find ourselves in the middle of explosive interest in all things Ghost Rider, and many of the character&#8217;s key issues are hotter than Johnny Blaze&#8217;s skull.  What&#8217;s&hellip;</p>
+
+                            </p>
+                        </a>
+                    </div>
+                    <div class="mt-6 flex items-center">
+                        <a href="https://blog.gocollect.com/ghost-rider-is-burning-up-the-charts-again/" target="_blank" class="text-sm text-green-500 hover:text-green-400 block mt-2">
+                            Continue reading
+                        </a>
+                    </div>
+                </div>
+            </div>
                                 <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
                 <div class="flex-shrink-0">
                                             <img class="h-36 w-full object-cover" src="https://i2.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/102021B.jpg?fit=2500%2C1308&ssl=1" alt="">
@@ -1177,149 +1317,9 @@
                     </div>
                 </div>
             </div>
-                                <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
-                <div class="flex-shrink-0">
-                                            <img class="h-36 w-full object-cover" src="https://i2.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/101521E.jpg?fit=2500%2C1308&ssl=1" alt="">
-                                    </div>
-                <div class="flex-1 bg-white p-6 pb-12 sm:pb-6 flex flex-col justify-between">
-                    <div class="flex-1">
-                        <a href="https://blog.gocollect.com/nycc-2021-inside-the-extravaganza/" target="_blank" class="block mt-2">
-                            <p class="text-xl font-semibold text-gray-900 truncate">
-                                NYCC 2021: Inside the Extravaganza
-                            </p>
-                            <div class="text-sm text-gray-500">
-                                <time datetime="2021-10-18">
-                                    Oct 18, 2021
-                                </time>
-                            </div>
-                            <p class="mt-3 text-base text-gray-500">
-                                <p>Comic con season returned in 2021, capped by the grand spectacle of this past weekend’s New York Comic Con. Here’s an inside look at the four-day con of cons, NYCC 2021.</p>
-
-                            </p>
-                        </a>
-                    </div>
-                    <div class="mt-6 flex items-center">
-                        <a href="https://blog.gocollect.com/nycc-2021-inside-the-extravaganza/" target="_blank" class="text-sm text-green-500 hover:text-green-400 block mt-2">
-                            Continue reading
-                        </a>
-                    </div>
-                </div>
-            </div>
-                                <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
-                <div class="flex-shrink-0">
-                                            <img class="h-36 w-full object-cover" src="https://i1.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/101521C.jpg?fit=2500%2C1308&ssl=1" alt="">
-                                    </div>
-                <div class="flex-1 bg-white p-6 pb-12 sm:pb-6 flex flex-col justify-between">
-                    <div class="flex-1">
-                        <a href="https://blog.gocollect.com/george-perez-legacy-binge-meisters-popcorn-poppers-salute/" target="_blank" class="block mt-2">
-                            <p class="text-xl font-semibold text-gray-900 truncate">
-                                George Pérez Legacy: Binge Meisters, Popcorn Poppers Salute!
-                            </p>
-                            <div class="text-sm text-gray-500">
-                                <time datetime="2021-10-18">
-                                    Oct 18, 2021
-                                </time>
-                            </div>
-                            <p class="mt-3 text-base text-gray-500">
-                                <p>The legacy of George Pérez.  Marvel Cinematic Universe, DC Extended Universe, CW, HBO Max &#8211; all take a moment to say thank you to George Pérez.  Pérez contributed pencil and artistic vision&hellip;</p>
-
-                            </p>
-                        </a>
-                    </div>
-                    <div class="mt-6 flex items-center">
-                        <a href="https://blog.gocollect.com/george-perez-legacy-binge-meisters-popcorn-poppers-salute/" target="_blank" class="text-sm text-green-500 hover:text-green-400 block mt-2">
-                            Continue reading
-                        </a>
-                    </div>
-                </div>
-            </div>
-                                <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
-                <div class="flex-shrink-0">
-                                            <img class="h-36 w-full object-cover" src="https://i0.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/101521D.jpg?fit=2500%2C1308&ssl=1" alt="">
-                                    </div>
-                <div class="flex-1 bg-white p-6 pb-12 sm:pb-6 flex flex-col justify-between">
-                    <div class="flex-1">
-                        <a href="https://blog.gocollect.com/the-1970s-horror-comics-boom-part-2/" target="_blank" class="block mt-2">
-                            <p class="text-xl font-semibold text-gray-900 truncate">
-                                The 1970s Horror Comics Boom &#8211; Part 2
-                            </p>
-                            <div class="text-sm text-gray-500">
-                                <time datetime="2021-10-17">
-                                    Oct 17, 2021
-                                </time>
-                            </div>
-                            <p class="mt-3 text-base text-gray-500">
-                                <p>Last week, we took a look at the changes to the Comics Code that occurred in 1971 and how that led to a 1970s horror comics boom, as well as the investment&hellip;</p>
-
-                            </p>
-                        </a>
-                    </div>
-                    <div class="mt-6 flex items-center">
-                        <a href="https://blog.gocollect.com/the-1970s-horror-comics-boom-part-2/" target="_blank" class="text-sm text-green-500 hover:text-green-400 block mt-2">
-                            Continue reading
-                        </a>
-                    </div>
-                </div>
-            </div>
-                                <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
-                <div class="flex-shrink-0">
-                                            <img class="h-36 w-full object-cover" src="https://i0.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/101521A.jpg?fit=2500%2C1308&ssl=1" alt="">
-                                    </div>
-                <div class="flex-1 bg-white p-6 pb-12 sm:pb-6 flex flex-col justify-between">
-                    <div class="flex-1">
-                        <a href="https://blog.gocollect.com/alpha-flight-the-next-guardians-of-the-galaxy/" target="_blank" class="block mt-2">
-                            <p class="text-xl font-semibold text-gray-900 truncate">
-                                Alpha Flight: The Next Guardians of the Galaxy?
-                            </p>
-                            <div class="text-sm text-gray-500">
-                                <time datetime="2021-10-16">
-                                    Oct 16, 2021
-                                </time>
-                            </div>
-                            <p class="mt-3 text-base text-gray-500">
-                                <p>With The X-Men making their debut in the MCU soon, Marvel Studios have a pantheon of characters who were not done justice by 20th Century Fox. One set of characters related to&hellip;</p>
-
-                            </p>
-                        </a>
-                    </div>
-                    <div class="mt-6 flex items-center">
-                        <a href="https://blog.gocollect.com/alpha-flight-the-next-guardians-of-the-galaxy/" target="_blank" class="text-sm text-green-500 hover:text-green-400 block mt-2">
-                            Continue reading
-                        </a>
-                    </div>
-                </div>
-            </div>
-                                <div class="flex flex-col col-span-3 lg:col-span-1 sm:rounded-lg sm:shadow-lg overflow-hidden">
-                <div class="flex-shrink-0">
-                                            <img class="h-36 w-full object-cover" src="https://i0.wp.com/blog.gocollect.com/wp-content/uploads/2021/10/101521F.jpg?fit=2500%2C1308&ssl=1" alt="">
-                                    </div>
-                <div class="flex-1 bg-white p-6 pb-12 sm:pb-6 flex flex-col justify-between">
-                    <div class="flex-1">
-                        <a href="https://blog.gocollect.com/gocollects-new-site-faqs/" target="_blank" class="block mt-2">
-                            <p class="text-xl font-semibold text-gray-900 truncate">
-                                GoCollect&#8217;s New Site: FAQs
-                            </p>
-                            <div class="text-sm text-gray-500">
-                                <time datetime="2021-10-15">
-                                    Oct 15, 2021
-                                </time>
-                            </div>
-                            <p class="mt-3 text-base text-gray-500">
-                                <p>Transparency is one of our most important values. As such, we want to share the FAQs regarding our new site with our community.</p>
-
-                            </p>
-                        </a>
-                    </div>
-                    <div class="mt-6 flex items-center">
-                        <a href="https://blog.gocollect.com/gocollects-new-site-faqs/" target="_blank" class="text-sm text-green-500 hover:text-green-400 block mt-2">
-                            Continue reading
-                        </a>
-                    </div>
-                </div>
-            </div>
                         </div>
 </div>
-<!-- Livewire Component wire-end:uJfLe9omJeQysy8YHgvM -->        </div>
+<!-- Livewire Component wire-end:yNK4FUEq8NdeOS9rkUp8 -->        </div>
     </div>
             </main>
 
@@ -1499,7 +1499,7 @@
         </div>
     </div>
 
-    <script src="/livewire/livewire.js?id=21fa1dd78491a49255cd" data-turbo-eval="false" data-turbolinks-eval="false" ></script><script data-turbo-eval="false" data-turbolinks-eval="false" >window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = 'pBGyyAtwTR9z3FpTQHr7rsuRL6BkGrWF0O4ew9B4';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
+    <script src="/livewire/livewire.js?id=21fa1dd78491a49255cd" data-turbo-eval="false" data-turbolinks-eval="false" ></script><script data-turbo-eval="false" data-turbolinks-eval="false" >window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = 'iHTWHCFgilV6ecRWtJVuLPeLuUgE7X85I0NOPgVQ';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
             <script>
             var swiper = new Swiper(".swiper-variants", {
                 slidesPerView: 1,
@@ -1530,7 +1530,7 @@
         xhr.open("POST", "/pv/cb", true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.setRequestHeader("X-CSRF-TOKEN", document.getElementsByName("csrf-token")[0].getAttribute("content"));
-        xhr.send("a=3702941");
+        xhr.send("a=5525743");
     </script>
 </div>
 </body>

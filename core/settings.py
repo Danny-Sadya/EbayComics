@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-za$&394-q&v2pxvs_9=3f7^hwa0c#vun95gem_fhsf0+yda@z%
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '213.189.219.231']
+ALLOWED_HOSTS = ['0.0.0.0', '213.189.219.231', '127.0.0.1']
 
 LOGIN_REDIRECT_URL = '/dashboard/'
 
@@ -61,14 +61,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
 DATABASES = {
+    'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'scrapers',
@@ -77,7 +77,7 @@ DATABASES = {
         'HOST': 'db',
         'PORT': '5432',
     }
-}
+}"""
 
 AUTH_USER_MODEL = 'dashboard.User'
 

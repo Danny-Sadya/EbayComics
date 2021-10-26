@@ -14,9 +14,7 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
 # set display port to avoid crash
 ENV DISPLAY=:99
-
-RUN apt-get update
-RUN apt-get install -y google-chrome-stable
-RUN  apt-get install -y  libglib2.0-0  libnss3  libgconf-2-4  libfontconfig1 
+RUN sh -c "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >>   /etc/apt/sources.list"
+RUN  apt-get install -y  libglib2.0-0  libnss3  libgconf-2-4  libfontconfig1
 
 COPY . /ebaycomics/

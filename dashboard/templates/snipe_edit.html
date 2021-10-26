@@ -31,45 +31,72 @@
 </head>
 {% if user.is_authenticated %}
 <body id="kt_body" style="background-image: url({% static 'dist/assets/media/patterns/header-bg.jpg' %} )" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
- <div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
-        <div class="page-title d-flex flex-column me-3">
-            <h1 class="d-flex text-white fw-bolder my-1 fs-3">Dashboard</h1>
-            <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
-                <li class="breadcrumb-item text-white opacity-75">
-                    <a href="../../demo2/dist/index.html" class="text-white text-hover-primary">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <span class="bullet bg-white opacity-75 w-5px h-2px"></span>
-                </li>
-                <li class="breadcrumb-item text-white opacity-75">Dashboard</li>
-                <li class="breadcrumb-item">
-                    <span class="bullet bg-white opacity-75 w-5px h-2px"></span>
-                </li>
-                <li class="breadcrumb-item text-white opacity-75">Update Section</li>
-            </ul>
-        </div>
-    </div>
-<div class="content">
-    <div class="container-fluid">
-        {% if 'dashboard.rw' in user.get_all_permissions %}
-            <div class="pt-6 col-md-6">
-                <div class="card px-10 px-lg-15 pt-0 pb-15">
-                    <form method="post">
-                        {% csrf_token %}
-                        <div class="mb-15 text-center">
-                            <h1 class="pt-3">Update Section</h1>
+ <div class="modal fade" id="kt_modal_edit_user" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered mw-1000px ">
+                                        <div class="modal-content">
+                                            <div class="modal-header" id="kt_modal_add_user_header">
+                                                <h2 class="fw-bolder">New Section</h2>
+                                                <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                                    data-bs-dismiss="modal" data-kt-users-modal-action="close">
+                                                    <span class="svg-icon svg-icon-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            viewBox="0 0 24 24" fill="none">
+                                                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2"
+                                                                rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                                            <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                                                transform="rotate(45 7.41422 6)" fill="black" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                                        <form id="kt_modal_edit_user_form" class="form" method="post">
+                                                            <div class="mb-15 text-center">
+                            <h1 class="pt-3">Edit comics</h1>
                         </div>
-                            {{ form.as_p }}
-                        <div class="text-center">
-                           <span class="input-group-btn">
-                                <input type="submit" value="Update" class="btn btn-primary">
-                            </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        {% endif %}
-    </div>
-</div>
+                                                            <div class="row">
+                                                            <div class="col-6">
+                                                            {% csrf_token %}
+                                                            <label class="form-label fs-6 fw-bold">Go Collect
+                                                                Link</label>
+                                                            {{ form.gocollect_link }}
+
+                                                            <button type="button" id="MyButtonEdit"
+                                                                class="btn btn-primary mt-3 mr-3 mb-3 MyButton">Generate
+                                                                gocollect data</button><br>
+                                                            <label class="form-label fs-6 mt-2 fw-bold">Price
+                                                                percentage</label>
+                                                            {{ form.price_percentage }}
+                                                            <label class="form-label fs-6 fw-bold">Floor price</label>
+                                                            {{ form.floor_price }}
+                                                            <label class="form-label fs-6 fw-bold">Search query</label>
+                                                            {{ form.title }}
+                                                            <label class="form-label fs-6 fw-bold">Lowest Grade</label>
+                                                            {{ form.lowest_grade }}
+                                                            <label class="form-label fs-6 fw-bold">Highest grade</label>
+                                                            {{ form.highest_grade }}
+                                                            <label class="form-label fs-6 fw-bold">Negative
+                                                                words</label>
+                                                            {{ form.negative_words }}
+                                                            <label class="form-label fs-6 fw-bold">Positive
+                                                                words</label>
+                                                            {{ form.positive_words }}
+                                                            <div class="text-center">
+                                                                <span class="input-group-btn">
+                                                                    <input type="submit" value="Create"
+                                                                        class="btn btn-primary mt-5">
+                                                                </span>
+                                                            </div>
+                                                                </div>
+                                                            <div id="go-collect-new-data2" class="col-6">
+                                                    </div>
+                                                                </div>
+                                                        </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+ </div>
 </body>
+
 {% endif %}

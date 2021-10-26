@@ -5,6 +5,9 @@ from django.views import View
 from django.core.files import File
 import urllib
 import os
+import requests
+from urllib.parse import urlparse
+from django.core.files.base import ContentFile
 
 from .forms import SnipeForm
 from .models import SnipeModel
@@ -12,7 +15,6 @@ from .scripts.get_comics_title import get_comics_title
 
 
 def dashboard_control(request, *args, **kwargs):
-    snipe_items = SnipeModel.objects.all()
     form = SnipeForm()
 
     if request.method == "POST":
@@ -27,14 +29,13 @@ def dashboard_control(request, *args, **kwargs):
                 title = request.POST['gocollect_link']
                 img = None
             print(form.cleaned_data)
-            SnipeModel.objects.create(title=title, **form.cleaned_data, image=File(img))
-            snipe = SnipeModel.objects.get(title=title)
+            snipe = SnipeModel.objects.create(**form.cleaned_data, image=File(img))
+            print(request.POST['gocollect_link'])
             if not snipe.image:
-                result = urllib.request.urlretrieve(request.POST['gocollect_link'])
-                snipe.image.save(os.path.basename(request.POST['gocollect_link']),
-                    File(open(result[0], 'rb'))
-                    )
-                snipe.save()
+                """name = urlparse(request.POST['gocollect_link']).path.split('/')[-1]
+                response = requests.get(request.POST['gocollect_link'])"""
+                #if response.status_code == 200:
+                snipe.image.save(title+'.png', ContentFile(img), save=True)
         else:
             print(form.errors)
         return redirect('/dashboard/')

@@ -39,6 +39,7 @@ class SnipeForm(forms.ModelForm):
             'highest_grade',
             'negative_words',
             'positive_words',
+            'title'
            # 'image',
         ]
 
@@ -62,6 +63,11 @@ class SnipeForm(forms.ModelForm):
             'negative_words': forms.TextInput(attrs={
                 'class': 'form-control form-control-solid',
             }),
+            'positive_words': forms.TextInput(attrs={
+                'class': 'form-control form-control-solid'}),
+            'title': forms.TextInput(attrs={
+                'id': 'title',
+            'class': 'form-control form-control-solid'}),
             #'image': forms.FileInput(attrs={
             #    'class': 'form-control form-control-solid',
             #})
