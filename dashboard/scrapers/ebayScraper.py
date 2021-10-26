@@ -58,8 +58,8 @@ class EbayScraper:
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_argument("--disable-blink-features=AutomationControlled")
-        self.driver = webdriver.Chrome(
-                                       chrome_options=options)
+        self.driver = webdriver.Chrome(executable_path=os.path.abspath(os.getcwd()) + r"\chromedriver.exe",
+                                       options=options)
         self.driver.set_page_load_timeout(30)
 
     def open_ebay_and_start_scraping(self):
@@ -95,10 +95,7 @@ class EbayScraper:
             self.driver.close()
             self.driver.quit()
             print(self.matched_items)
-            test = self.matched_items
-            self.matched_items = []
-            self.scraped_items = []
-            return test
+            return self.matched_items
 
     def get_ebay_course(self):
         try:
@@ -170,8 +167,10 @@ class EbayScraper:
                     grade = self.find_grade_in_title(item)
                     if grade:
                         if self.match_grade_criteria(grade):
-                            if self.match_price_criteria(item, grade):
-                                 self.matched_items.append(item)
+                            is_match, max_price = self.match_price_criteria(item, grade)
+                            if is_match:
+                                item['max_price'] = max_price
+                                self.matched_items.append(item)
 
     def match_positive_words_criteria(self, item):
         try:
@@ -217,13 +216,13 @@ class EbayScraper:
             floor_cost = (100 - self.floor_price) * cgc_cost / 100
            # print(f'floor cost {floor_cost}, item cost {item["cost"]}, max cost {cost_that_user_willing_to_pay} at {item["title"]}, {item["url"]}')
             if floor_cost <= item['cost'] <= cost_that_user_willing_to_pay:
-                #print(f'floor cost {floor_cost}, item cost {item["cost"]}, max cost {cost_that_user_willing_to_pay} at {item["title"]}, {item["url"]}')
-                return True
-            return False
+                # print(f'floor cost {floor_cost}, item cost {item["cost"]}, max cost {cost_that_user_willing_to_pay} at {item["title"]}, {item["url"]}')
+                return True, cost_that_user_willing_to_pay
+            return False, None
         except Exception as ex:
-            print('Cannot match price criterias: ', ex, item['url'])
+            # print('Cannot match price criterias: ', ex, item['url'])
             # print(grade, item)
-            return False
+            return False, None
 
     def match_grade_criteria(self, grade):
         try:
@@ -450,8 +449,7 @@ def get_values_and_grades(url):
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_argument("--disable-blink-features=AutomationControlled")
-        driver = webdriver.Chrome(
-                                       options=options)
+        driver = webdriver.Chrome(executable_path=os.path.abspath(os.getcwd()) + r"\chromedriver.exe", options=options)
         driver.set_page_load_timeout(30)
 
         driver.get("https://gocollect.com/login")
@@ -506,8 +504,8 @@ def get_values_and_grades(url):
 
 if __name__ == "__main__":
         driver = EbayScraper(product_title = "Avengers #4", min_grade = 0.0, price_percentage = 13000,
-                             floor_price = 85, max_grade = 10.0, negative_words = '', positive_words = '',
-                             cgc_link = 'https://comics.gocollect.com/guide/view/124741')
+                             floor_price = 1, max_grade = 10.0, negative_words = '', positive_words = '',
+                             cgc_link = 'https://gocollect.com/comic/avengers-4')
         matched_items = driver.open_ebay_and_start_scraping()
         for item in matched_items:
             print(item)

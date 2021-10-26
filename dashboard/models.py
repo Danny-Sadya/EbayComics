@@ -7,12 +7,12 @@ def Reverse(tuples):
     return new_tup
 
 
+
 grades_list = []
 for i in range(0, 101):
     grades_list.append((str((float(i/10))), str(float(i/10))))
 
 GRADES = tuple(grades_list)
-
 
 PERMISSION_LEVEL = (
     ('r', 'Readonly'),
@@ -47,10 +47,11 @@ class EbayScraperResult(models.Model):
     scraper_model = models.ForeignKey(SnipeModel, on_delete=models.CASCADE)
     title = models.CharField(null=True, blank=True, max_length=255)
     price = models.IntegerField(null=True, blank=True)
+    max_price = models.IntegerField(null=True, blank=True)
     bid_format = models.CharField(null=True, blank=True, max_length=255)
     comics_url = models.CharField(null=True, blank=True, max_length=255)
     comics_img_url = models.CharField(null=True, blank=True, max_length=255)
-
+    is_already_in_gixen = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
         return(f'{self.scraper_model.title} | {str(self.title)}')

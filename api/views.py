@@ -23,4 +23,3 @@ class GenerateGoCollectDataView(APIView):
         elif not title and not values_and_grades:
             messages.error(request, "You have entered incorrect link")
         return Response(status=status.HTTP_404_NOT_FOUND)
-

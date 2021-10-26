@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms.models import model_to_dict
 from django.views import View
@@ -83,4 +82,3 @@ def edit_snipe(request, pk):
     else:
         context = {'form': form}
         return render(request, 'snipe_edit.html', context)
-
