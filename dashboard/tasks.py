@@ -25,10 +25,28 @@ class EbayScraperTask:
         scraper = EbayScraper(product_title, cgc_link, price_percentage, floor_price, min_grade, max_grade, negative_words, positive_words)
         result = scraper.open_ebay_and_start_scraping() 
         for comics in result:
-            print(f'saving comic {comics["title"]}')
-            EbayScraperResult.objects.get_or_create(scraper_model=self.snipe, title=comics['title'], price=comics['cost'],
-                                                    max_price=comics['max_price'], bid_format=comics['bid_format'],
-                                                    comics_url=comics['url'], comics_img_url=comics['img_url'])
+            try:
+                snipe_model = EbayScraperResult.objects.get(comics_url=comics['url'])
+                snipe_model.price = comics['cost']
+                snipe_model.max_price = comics['max_price']
+                snipe_model.save()
+                print(f'updating comic {comics["title"]}')
+            except Exception:
+                print(f'saving comic {comics["title"]}')
+                EbayScraperResult.objects.create(scraper_model=self.snipe, title=comics['title'],
+                                                 price=comics['cost'],
+                                                 max_price=comics['max_price'], bid_format=comics['bid_format'],
+                                                 comics_url=comics['url'], comics_img_url=comics['img_url'])
+            finally:
+                all_comics = EbayScraperResult.objects.filter(scraper_model=self.snipe)
+                for comic in all_comics:
+                    comic_url = comic.comics_url
+                    try:
+                        comics = [x for x in result if x['url'] == comic_url][0]
+                    except Exception as ex:
+                        #print(ex)
+                        print(f'Comic not exist, deleting {comic.title}')
+                        comic.delete()
 
 
 def pool_scraper_task(snipe):

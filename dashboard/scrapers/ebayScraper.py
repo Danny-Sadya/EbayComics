@@ -58,7 +58,7 @@ class EbayScraper:
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_argument("--disable-blink-features=AutomationControlled")
-        self.driver = webdriver.Chrome(executable_path=os.path.abspath(os.getcwd()) + r"\chromedriver.exe",
+        self.driver = webdriver.Chrome(
                                        options=options)
         self.driver.set_page_load_timeout(30)
 
@@ -449,7 +449,7 @@ def get_values_and_grades(url):
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_argument("--disable-blink-features=AutomationControlled")
-        driver = webdriver.Chrome(executable_path=os.path.abspath(os.getcwd()) + r"\chromedriver.exe", options=options)
+        driver = webdriver.Chrome(options=options)
         driver.set_page_load_timeout(30)
 
         driver.get("https://gocollect.com/login")
